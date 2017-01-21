@@ -35,6 +35,7 @@ Clang-Tidy Checks
    cppcoreguidelines-pro-type-vararg
    cppcoreguidelines-slicing
    cppcoreguidelines-special-member-functions
+   embedded-typesafe-register-access
    google-build-explicit-make-pair
    google-build-namespaces
    google-build-using-namespace
