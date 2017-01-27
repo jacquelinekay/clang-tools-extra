@@ -11,6 +11,7 @@ add_clang_library(clangTidyPlugin
   clangTidyBoostModule
   clangTidyCERTModule
   clangTidyCppCoreGuidelinesModule
+  clangTidyEmbeddedModule
   clangTidyGoogleModule
   clangTidyLLVMModule
   clangTidyMiscModule

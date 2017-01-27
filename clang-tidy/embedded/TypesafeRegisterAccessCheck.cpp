@@ -32,6 +32,7 @@ TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
 
   // Load the address map for a file 
   // TODO Clean this shit up
+  /*
   std::ifstream i(chip_name + ".yaml");
   std::string yaml_lines;
   i >> yaml_lines;
@@ -68,6 +69,7 @@ TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
     } else
       break;
   }
+  */
 
 
 }
@@ -96,7 +98,7 @@ void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
   */
   auto CompoundAssignStatement = binaryOperator(
         hasOperatorName("&="),
-        hasLHS(expr().bind("address")),
+        // hasLHS(rValueReferenceType(isVolatileQualified()).bind("address")),
         hasRHS(integerLiteral().bind("literal")));
   Finder->addMatcher(CompoundAssignStatement, this);
 }
@@ -111,8 +113,12 @@ void TypesafeRegisterAccessCheck::check(const MatchFinder::MatchResult &Result) 
   Address key = static_cast<Address>(MatchedLiteral->getValue().getLimitedValue());
   // cast the matched integer literal as a 32-bit unsigned
   if (address_map.find(key) != address_map.end()) {
-    // TODO Fixit hint
-    diag(MatchedLiteral->getLocation(), "Found a raw compound assignment");
+    StringRef replacement = "set(" + address_map[key] + ")";
+    /*
+    diag(MatchedLiteral->getLocation(), "Found a raw compound assignment")
+      << MatchedLiteral
+      << FixItHint::CreateReplacement(MatchedLiteral->getLocation(), replacement);
+      */
   }
 
   // TODO check if literal is in the map

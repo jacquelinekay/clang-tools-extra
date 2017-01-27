@@ -458,6 +458,11 @@ extern volatile int CppCoreGuidelinesModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED CppCoreGuidelinesModuleAnchorDestination =
     CppCoreGuidelinesModuleAnchorSource;
 
+// This anchor is used to force the linker to link the EmbeddedModule.
+extern volatile int EmbeddedModuleAnchorSource;
+static int LLVM_ATTRIBUTE_UNUSED EmbeddedModuleAnchorDestination =
+    EmbeddedModuleAnchorSource;
+
 // This anchor is used to force the linker to link the GoogleModule.
 extern volatile int GoogleModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED GoogleModuleAnchorDestination =
