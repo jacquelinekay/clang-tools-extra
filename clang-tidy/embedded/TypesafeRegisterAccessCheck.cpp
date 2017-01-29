@@ -28,7 +28,7 @@ TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
   auto chip_name = Options.get("ChipName", "");
 
   // test case: add a single known register value,
-  address_map.emplace(0xDEADBEEF, "deadbeef");
+  address_map.emplace(std::make_pair(0xDEADBEEF, 0x1), "Deadbeef::v00");
 
   // Load the address map for a file 
   // TODO Clean this shit up
@@ -70,8 +70,6 @@ TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
       break;
   }
   */
-
-
 }
 
 void TypesafeRegisterAccessCheck::storeOptions(
@@ -81,55 +79,51 @@ void TypesafeRegisterAccessCheck::storeOptions(
 }
 
 void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
-  // Match all compound statements
-  // TODO Add more operators
-  // TODO Check if address is a memory field type. need another data table for this
-  // Check for user defined literals
-  // find "x & r"
-  /*
-  auto AndStatement = binaryOperator(
-        hasOperatorName("&"),
-        hasLHS(expr().bind("address")),
-        hasRHS(integerLiteral().bind("literal")));
-  auto AssignStatement(binaryOperator(
-        hasOperatorName("="),
-        hasLHS(equalsBoundNode("address")),
-        hasRHS(AndStatement)));
-  */
-  auto CompoundAssignStatement = binaryOperator(
-        hasOperatorName("&="),
-        // hasLHS(rValueReferenceType(isVolatileQualified()).bind("address")),
-        hasRHS(integerLiteral().bind("literal")));
-  Finder->addMatcher(CompoundAssignStatement, this);
+  // this will only be a "write" check
+
+  auto DereferencedVolatilePointer = unaryOperator(hasOperatorName("*"), hasUnaryOperand(
+            explicitCastExpr(
+                hasDestinationType(isAnyPointer()),
+                hasSourceExpression(integerLiteral().bind("address")))));
+
+  auto DirectWriteMatcher = binaryOperator(
+          hasOperatorName("="),
+          hasLHS(allOf(DereferencedVolatilePointer,
+              expr(hasType(isVolatileQualified())))),
+          hasRHS(ignoringImpCasts(integerLiteral().bind("value")))).bind("write_expr");
+
+  Finder->addMatcher(DirectWriteMatcher, this);
+
+  // TODO Not binding to the address properly here
+  auto IndirectWriteMatcher = binaryOperator(
+      hasOperatorName("="),
+      hasLHS(declRefExpr(hasType(isVolatileQualified())).bind("address")),
+      hasRHS(integerLiteral().bind("value"))).bind("write_expr");
+
+  Finder->addMatcher(IndirectWriteMatcher, this);
 }
 
 void TypesafeRegisterAccessCheck::check(const MatchFinder::MatchResult &Result) {
-  const auto *MatchedLiteral = Result.Nodes.getNodeAs<IntegerLiteral>("literal");
-  if (!MatchedLiteral) {
-    // fail silently :(
+  const auto *MatchedValue = Result.Nodes.getNodeAs<IntegerLiteral>("value");
+  const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
+  const auto *MatchedLocation = Result.Nodes.getNodeAs<Expr>("write_expr");
+  if (!MatchedValue || !MatchedAddress || !MatchedLocation) {
     return;
   }
 
-  Address key = static_cast<Address>(MatchedLiteral->getValue().getLimitedValue());
+  Address k1 = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
+  ValueT k2 = static_cast<ValueT>(MatchedValue->getValue().getLimitedValue());
+  auto key = std::make_pair(k1, k2);
+  if (address_map.find(key) == address_map.end()) {
+      return;
+  }
+
   // cast the matched integer literal as a 32-bit unsigned
-  if (address_map.find(key) != address_map.end()) {
-    StringRef replacement = "set(" + address_map[key] + ")";
-    /*
-    diag(MatchedLiteral->getLocation(), "Found a raw compound assignment")
-      << MatchedLiteral
-      << FixItHint::CreateReplacement(MatchedLiteral->getLocation(), replacement);
-      */
-  }
+  std::string replacement = "apply(write(" + address_map[key] + "))";
+ auto ReplacementRange = CharSourceRange::getTokenRange(MatchedLocation->getLocStart(), MatchedLocation->getLocEnd());
 
-  // TODO check if literal is in the map
-
-  /*
-  if (MatchedDecl->getName().startswith("awesome_"))
-    return;
-  diag(MatchedDecl->getLocation(), "function %0 is insufficiently awesome")
-      << MatchedDecl
-      << FixItHint::CreateInsertion(MatchedDecl->getLocation(), "awesome_");
-  */
+  diag(MatchedLocation->getLocStart(), "Found write to register via volatile cast")
+    << FixItHint::CreateReplacement(ReplacementRange, replacement);
 }
 
 } // namespace embedded

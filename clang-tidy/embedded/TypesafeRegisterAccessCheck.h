@@ -20,7 +20,9 @@ namespace embedded {
 /// 
 class TypesafeRegisterAccessCheck : public ClangTidyCheck {
 public:
-  using Address = uint32_t;
+  using Address = unsigned int;
+  using ValueT = unsigned int;
+  using AddressKey = std::pair<Address, ValueT>;
   TypesafeRegisterAccessCheck(StringRef Name, ClangTidyContext *Context);
 
   void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
@@ -28,7 +30,7 @@ public:
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
 
 private:
-  std::unordered_map<Address, std::string> address_map;
+  std::map<AddressKey, std::string> address_map;
 };
 
 } // namespace embedded
