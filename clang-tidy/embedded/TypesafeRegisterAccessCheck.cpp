@@ -11,10 +11,12 @@
 #include "TypesafeRegisterAccessCheck.h"
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
-#include "llvm/Support/YAMLParser.h"
+
+#include "llvm/Support/Debug.h"
+
+#define DEBUG_TYPE ""
 
 using namespace clang::ast_matchers;
-
 
 namespace clang {
 namespace tidy {
@@ -23,59 +25,36 @@ namespace embedded {
 TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
     StringRef Name, ClangTidyContext *Context)
     : ClangTidyCheck(Name, Context) {
-  // TODO we need a default.
-  // TODO Error handling from this constructor...
-  auto chip_name = Options.get("ChipName", "");
-
-  // test case: add a single known register value,
-  address_map.emplace(std::make_pair(0xDEADBEEF, 0x1), "Deadbeef::v00");
+  // TODO Better error handling from this constructor...
+  chipFile = Options.get("DescriptionFile", "test.yaml");
 
   // Load the address map for a file 
-  // TODO Clean this shit up
-  /*
-  std::ifstream i(chip_name + ".yaml");
-  std::string yaml_lines;
-  i >> yaml_lines;
-
-  llvm::SourceMgr sm;
-  StringRef input(yaml_lines);
-  llvm::yaml::Stream stream(input, sm);
-
-  for (llvm::yaml::document_iterator di = stream.begin(), de = stream.end();
-       di != de; ++di) {
-    llvm::yaml::Node *n = di->getRoot();
-    if (n) {
-      // Do something with n...
-      // Check if N is a KeyValueNode
-      auto kv_pair = static_cast<llvm::yaml::KeyValueNode*>(n);
-      if (kv_pair) {
-        auto k = static_cast<llvm::yaml::ScalarNode*>(kv_pair->getKey());
-        if (!k) {
-          continue;
-        }
-        auto v = static_cast<llvm::yaml::ScalarNode*>(kv_pair->getValue());
-        if (!v) {
-          continue;
-        }
-        // TODO add k as an Address type
-        Address key;
-        unsigned long long longk;
-        if (!llvm::getAsUnsignedInteger(k->getRawValue(), 16, longk)) {
-          continue;
-        }
-        key = static_cast<Address>(longk);  // TODO Boundary checking
-        address_map.emplace(key, v->getRawValue().str());
-      }
-    } else
-      break;
+  // TODO folder location for this...
+  std::ifstream istream(chipFile);
+  if (!istream) {
+    DEBUG(llvm::errs() << "Failed to open yaml file\n");
+    return;
   }
-  */
+  std::string yamlInput((std::istreambuf_iterator<char>(istream)), std::istreambuf_iterator<char>());
+
+  std::vector<RegisterEntry> registers;
+  llvm::yaml::Input yamlIn(yamlInput);
+  if (yamlIn.error()) {
+    DEBUG(llvm::errs() << "Failed open yaml input\n");
+    return;
+  }
+
+  yamlIn >> registers;
+
+  for (auto& reg : registers) {
+    address_map[std::make_pair(reg.address, reg.value)] = reg.registerName;
+    DEBUG(llvm::dbgs() << "Added register" << reg.address << "," << reg.value << ", " << reg.registerName << "\n" );
+  }
 }
 
 void TypesafeRegisterAccessCheck::storeOptions(
     ClangTidyOptions::OptionMap &Opts) {
-  // TODO Custom type for ChipName?
-  Options.store(Opts, "ChipName", "ChipName");
+  Options.store(Opts, "DescriptionFile", chipFile);
 }
 
 void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
@@ -94,13 +73,19 @@ void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
 
   Finder->addMatcher(DirectWriteMatcher, this);
 
+  /*
+  auto VolatileDeclRefAssignment = varDecl(hasInitializer(explicitCastExpr(
+                hasDestinationType(isAnyPointer()),
+                hasSourceExpression(integerLiteral().bind("address"))))).bind("var_decl");
+
   // TODO Not binding to the address properly here
   auto IndirectWriteMatcher = binaryOperator(
       hasOperatorName("="),
-      hasLHS(declRefExpr(hasType(isVolatileQualified())).bind("address")),
+      hasLHS(unaryOperator(hasOperatorName("*"), hasUnaryOperand(ignoringImpCasts(declRefExpr().equalsBoundNode("var_decl"))))),
       hasRHS(integerLiteral().bind("value"))).bind("write_expr");
 
   Finder->addMatcher(IndirectWriteMatcher, this);
+  */
 }
 
 void TypesafeRegisterAccessCheck::check(const MatchFinder::MatchResult &Result) {

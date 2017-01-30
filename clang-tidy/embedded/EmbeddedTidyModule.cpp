@@ -28,7 +28,7 @@ public:
   ClangTidyOptions getModuleOptions() override {
     ClangTidyOptions Options;
     auto &Opts = Options.CheckOptions;
-
+    Opts["embedded-typesafe-register-access.DescriptionFile"] = "test.yaml";
     return Options;
   }
 };
