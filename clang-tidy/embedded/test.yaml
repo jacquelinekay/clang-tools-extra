@@ -1,0 +1,8 @@
+# address, value, enum name
+- address: 0xDEADBEEF
+  name: Deadbeef
+  values:
+  - value: 0x0
+    name: v00
+  - value: 0x1
+    name: v01

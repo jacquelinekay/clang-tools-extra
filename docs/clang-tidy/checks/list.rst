@@ -36,6 +36,7 @@ Clang-Tidy Checks
    cppcoreguidelines-slicing
    cppcoreguidelines-special-member-functions
    embedded-typesafe-register-access
+   embedded-typesafe-register-read
    google-build-explicit-make-pair
    google-build-namespaces
    google-build-using-namespace

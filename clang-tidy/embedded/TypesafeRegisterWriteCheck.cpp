@@ -1,4 +1,4 @@
-//===--- TypesafeRegisterAccessCheck.cpp - clang-tidy----------------------===//
+//===--- TypesafeRegisterWriteCheck.cpp - clang-tidy----------------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -8,11 +8,9 @@
 //===----------------------------------------------------------------------===//
 #include <fstream>
 
-#include "TypesafeRegisterAccessCheck.h"
+#include "TypesafeRegisterWriteCheck.h"
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
-
-#include "llvm/Support/Debug.h"
 
 #define DEBUG_TYPE ""
 
@@ -22,48 +20,28 @@ namespace clang {
 namespace tidy {
 namespace embedded {
 
-TypesafeRegisterAccessCheck::TypesafeRegisterAccessCheck(
+TypesafeRegisterWriteCheck::TypesafeRegisterWriteCheck(
     StringRef Name, ClangTidyContext *Context)
     : ClangTidyCheck(Name, Context) {
-  // TODO Better error handling from this constructor...
   chipFile = Options.get("DescriptionFile", "test.yaml");
-
-  // Load the address map for a file 
-  // TODO folder location for this...
-  std::ifstream istream(chipFile);
-  if (!istream) {
-    DEBUG(llvm::errs() << "Failed to open yaml file\n");
-    return;
-  }
-  std::string yamlInput((std::istreambuf_iterator<char>(istream)), std::istreambuf_iterator<char>());
-
-  std::vector<RegisterEntry> registers;
-  llvm::yaml::Input yamlIn(yamlInput);
-  if (yamlIn.error()) {
-    DEBUG(llvm::errs() << "Failed open yaml input\n");
-    return;
-  }
-
-  yamlIn >> registers;
-
-  for (auto& reg : registers) {
-    address_map[std::make_pair(reg.address, reg.value)] = reg.registerName;
-    DEBUG(llvm::dbgs() << "Added register" << reg.address << "," << reg.value << ", " << reg.registerName << "\n" );
-  }
+  ReadDescriptionYAML(chipFile, addressMap);
 }
 
-void TypesafeRegisterAccessCheck::storeOptions(
+void TypesafeRegisterWriteCheck::storeOptions(
     ClangTidyOptions::OptionMap &Opts) {
   Options.store(Opts, "DescriptionFile", chipFile);
 }
 
-void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
+void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
   // this will only be a "write" check
 
-  auto DereferencedVolatilePointer = unaryOperator(hasOperatorName("*"), hasUnaryOperand(
-            explicitCastExpr(
-                hasDestinationType(isAnyPointer()),
-                hasSourceExpression(integerLiteral().bind("address")))));
+  // TODO: writing known values vs. writing arbitrary values
+  // TODO combining writes
+  // write(peripheralName::registerName, value)
+  // vs.
+  // write(peripheralName::registerName::knownValue)
+
+  auto DereferencedVolatilePointer = DereferencedPointerCastMatcher();
 
   auto DirectWriteMatcher = binaryOperator(
           hasOperatorName("="),
@@ -88,24 +66,27 @@ void TypesafeRegisterAccessCheck::registerMatchers(MatchFinder *Finder) {
   */
 }
 
-void TypesafeRegisterAccessCheck::check(const MatchFinder::MatchResult &Result) {
+void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedValue = Result.Nodes.getNodeAs<IntegerLiteral>("value");
   const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
   const auto *MatchedLocation = Result.Nodes.getNodeAs<Expr>("write_expr");
   if (!MatchedValue || !MatchedAddress || !MatchedLocation) {
+  //if (!MatchedAddress || !MatchedLocation) {
     return;
   }
 
   Address k1 = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
   ValueT k2 = static_cast<ValueT>(MatchedValue->getValue().getLimitedValue());
-  auto key = std::make_pair(k1, k2);
-  if (address_map.find(key) == address_map.end()) {
+  if (addressMap.find(k1) == addressMap.end()) {
+      return;
+  }
+  if (addressMap[k1].values.find(k2) == addressMap[k1].values.end()) {
       return;
   }
 
   // cast the matched integer literal as a 32-bit unsigned
-  std::string replacement = "apply(write(" + address_map[key] + "))";
- auto ReplacementRange = CharSourceRange::getTokenRange(MatchedLocation->getLocStart(), MatchedLocation->getLocEnd());
+  std::string replacement = "apply(write(" + addressMap[k1].values[k2] + "))";
+  auto ReplacementRange = CharSourceRange::getTokenRange(MatchedLocation->getLocStart(), MatchedLocation->getLocEnd());
 
   diag(MatchedLocation->getLocStart(), "Found write to register via volatile cast")
     << FixItHint::CreateReplacement(ReplacementRange, replacement);
