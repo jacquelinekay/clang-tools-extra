@@ -37,6 +37,8 @@ void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
 
   // TODO: writing known values vs. writing arbitrary values
   // TODO combining writes
+  // TODO reset (set to clear)
+  // TODO clear
   // write(peripheralName::registerName, value)
   // vs.
   // write(peripheralName::registerName::knownValue)

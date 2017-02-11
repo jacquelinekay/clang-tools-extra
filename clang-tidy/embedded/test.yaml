@@ -1,8 +1,16 @@
-# address, value, enum name
 - address: 0xDEADBEEF
   name: Deadbeef
-  values:
-  - value: 0x0
-    name: v00
-  - value: 0x1
-    name: v01
+  fields:
+  - name: field1
+    mask: 0x1
+    values:
+    - value: 0x0
+      name: v00
+    - value: 0x1
+      name: v01
+  - name: field2
+    mask: 0xFFFFFFF0
+    values:
+    - value: 0x0
+      name: v00
+    - value: 0xDEADBEE0

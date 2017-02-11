@@ -10,6 +10,7 @@ namespace tidy {
 namespace embedded {
 
 using Address = uint32_t;
+using MaskT = uint32_t;
 using ValueT = uint32_t;
 
 struct RegisterValue {
@@ -17,15 +18,26 @@ struct RegisterValue {
   std::string name;
 };
 
+struct RegisterField {
+  std::string name;
+  llvm::yaml::Hex32 mask;
+  std::vector<RegisterValue> values;
+};
+
 struct RegisterEntry {
   llvm::yaml::Hex32 address;
   std::string name;
-  std::vector<RegisterValue> values;
+  std::vector<RegisterField> fields;
+};
+
+struct FieldEntry {
+  std::string name;
+  std::unordered_map<ValueT, std::string> values;
 };
 
 struct MapEntry {
   std::string name;
-  std::unordered_map<ValueT, std::string> values;
+  std::unordered_map<MaskT, FieldEntry> fields;
 };
 
 using AddressNameMap = std::unordered_map<Address, MapEntry>;
@@ -57,17 +69,28 @@ struct MappingTraits<clang::tidy::embedded::RegisterValue> {
 };
 
 template <>
+struct MappingTraits<clang::tidy::embedded::RegisterField> {
+  static void mapping(IO &io, clang::tidy::embedded::RegisterField &entry) {
+    // TODO
+    io.mapRequired("name",  entry.name);
+    io.mapRequired("mask", entry.mask);
+    io.mapRequired("values", entry.values);
+  }
+};
+
+template <>
 struct MappingTraits<clang::tidy::embedded::RegisterEntry> {
   static void mapping(IO &io, clang::tidy::embedded::RegisterEntry &entry) {
     io.mapRequired("address", entry.address);
     io.mapRequired("name",    entry.name);
-    io.mapRequired("values",  entry.values);
+    io.mapRequired("fields",  entry.fields);
   }
 };
 
 }  // namespace yaml
 }  // namespace llvm
 
+LLVM_YAML_IS_SEQUENCE_VECTOR(clang::tidy::embedded::RegisterField)
 LLVM_YAML_IS_SEQUENCE_VECTOR(clang::tidy::embedded::RegisterEntry)
 LLVM_YAML_IS_SEQUENCE_VECTOR(clang::tidy::embedded::RegisterValue)
 

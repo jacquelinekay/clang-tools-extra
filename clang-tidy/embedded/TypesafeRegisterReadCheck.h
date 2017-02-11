@@ -29,8 +29,6 @@ public:
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
 
 private:
-  template<typename T>
-  void emitDiagnosticFor(const T* MatchedNode, const IntegerLiteral* MatchedAddress);
   std::string chipFile;
   AddressNameMap addressMap;
 };

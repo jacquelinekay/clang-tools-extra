@@ -32,42 +32,40 @@ void TypesafeRegisterReadCheck::registerMatchers(MatchFinder *Finder) {
       allOf(DereferencedPointerCastMatcher(),
               expr(hasType(isVolatileQualified()))));
 
+  // Find mask operations corresponding to specific field locations
+  auto MaskMatcher = binaryOperator(
+      hasOperatorName("&"),
+      hasEitherOperand(DereferencedVolatilePointer),
+      hasEitherOperand(integerLiteral().bind("mask")));
+
   auto DirectReadMatcher = binaryOperator(
     hasOperatorName("="),
     hasLHS(declRefExpr()),
     hasRHS(expr(DereferencedVolatilePointer).bind("read_expr")));
   Finder->addMatcher(DirectReadMatcher, this);
 
-  auto AssignPointer = ignoringImpCasts(DereferencedPointerCastMatcher());
-
   auto DirectReadAssignMatcher = varDecl(
-      hasInitializer(expr(AssignPointer).bind("read_expr")));
+      hasInitializer(expr(DereferencedVolatilePointer).bind("read_expr")));
   Finder->addMatcher(DirectReadAssignMatcher, this);
 }
 
 void TypesafeRegisterReadCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
   const auto *MatchedExpr = Result.Nodes.getNodeAs<Expr>("read_expr");
-  emitDiagnosticFor(MatchedExpr, MatchedAddress);
-}
-
-template <typename T>
-void TypesafeRegisterReadCheck::emitDiagnosticFor(
-    const T *MatchedNode, const IntegerLiteral *MatchedAddress) {
+  const auto *MatchedMask = Result.Nodes.getNodeAs<IntegerLiteral>("mask");
   Address k1 = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
-  // ValueT k2 = static_cast<ValueT>(MatchedNode->getValue().getLimitedValue());
   if (addressMap.find(k1) == addressMap.end()) {
       return;
   }
-  /*
-  if (addressMap[k1].values.find(k2) == addressMap[k1].values.end()) {
-      return;
+  std::string replacement;
+  if (MatchedMask) {
+    // 
+  } else {
+    replacement = "apply(read(" + addressMap[k1].name + "))";
   }
-  */
-  std::string replacement = "apply(read(" + addressMap[k1].name + "))";
-  auto ReplacementRange = CharSourceRange::getTokenRange(MatchedNode->getLocStart(), MatchedNode->getLocEnd());
+  auto ReplacementRange = CharSourceRange::getTokenRange(MatchedExpr->getLocStart(), MatchedExpr->getLocEnd());
 
-  diag(MatchedNode->getLocStart(),
+  diag(MatchedExpr->getLocStart(),
        "Found read from register via volatile cast")
     << FixItHint::CreateReplacement(ReplacementRange, replacement);
 }

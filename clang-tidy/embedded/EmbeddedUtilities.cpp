@@ -32,8 +32,11 @@ ReadYamlErrorCode ReadDescriptionYAML(std::string const& name, AddressNameMap& a
     // addressMap[std::make_pair(reg.address, reg.value)] = reg.registerName;
     addressMap[reg.address].name = reg.name;
     // DEBUG(llvm::dbgs() << "Added register: " << reg.address << "," << reg.name << "\n" );
-    for (const auto& value : reg.values) {
-      addressMap[reg.address].values[value.value] = value.name;
+    for (const auto& field : reg.fields) {
+      addressMap[reg.address].fields[field.mask].name = field.name;
+      for (const auto& value : field.values) {
+        addressMap[reg.address].fields[field.mask].values[value.value] = value.name;
+      }
     }
   }
   return ReadYamlErrorCode::Success;
