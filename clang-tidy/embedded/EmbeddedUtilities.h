@@ -50,7 +50,19 @@ enum class ReadYamlErrorCode : char {
 
 ReadYamlErrorCode ReadDescriptionYAML(std::string const& name, AddressNameMap& addressMap);
 
-clang::ast_matchers::internal::BindableMatcher<clang::Stmt> DereferencedPointerCastMatcher();
+using VariadicMatcherT = clang::ast_matchers::internal::VariadicOperatorMatcher<
+    clang::ast_matchers::internal::BindableMatcher<clang::Stmt>,
+    clang::ast_matchers::internal::BindableMatcher<clang::Stmt>>;
+VariadicMatcherT DereferencedVolatileCastMatcher();
+
+clang::ast_matchers::internal::Matcher<clang::Expr> MaskMatcher();
+
+// Given a mask and an MapEntry, return a sequence of Fields that the mask touches
+std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask);
+
+std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask, const ValueT value);
+
+std::string GetAllFields(const MapEntry& reg);
 
 } // namespace embedded
 } // namespace tidy

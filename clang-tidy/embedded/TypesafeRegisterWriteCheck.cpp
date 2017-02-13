@@ -35,6 +35,7 @@ void TypesafeRegisterWriteCheck::storeOptions(
 void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
   // this will only be a "write" check
 
+  // TODO: Make sure we are referencing the same register within the same expression.
   // TODO: writing known values vs. writing arbitrary values
   // TODO combining writes
   // TODO reset (set to clear)
@@ -43,15 +44,28 @@ void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
   // vs.
   // write(peripheralName::registerName::knownValue)
 
-  auto DereferencedVolatilePointer = DereferencedPointerCastMatcher();
+  auto DereferencedVolatilePointer = DereferencedVolatileCastMatcher();
 
+  // If there's no mask, we expect this to write to all fields, need to decompose
   auto DirectWriteMatcher = binaryOperator(
           hasOperatorName("="),
-          hasLHS(allOf(DereferencedVolatilePointer,
-              expr(hasType(isVolatileQualified())))),
-          hasRHS(ignoringImpCasts(integerLiteral().bind("value")))).bind("write_expr");
+          hasLHS(DereferencedVolatilePointer),
+          hasRHS(ignoringParenImpCasts(integerLiteral().bind("value")))).bind("write_expr");
 
   Finder->addMatcher(DirectWriteMatcher, this);
+
+  auto MaskedWriteMatcher = binaryOperator(
+          hasOperatorName("="),
+          hasLHS(DereferencedVolatilePointer),
+          hasRHS(
+            ignoringParenImpCasts(binaryOperator(
+              hasOperatorName("|"),
+              hasEitherOperand(MaskMatcher()),
+              hasEitherOperand(ignoringParenImpCasts(integerLiteral().bind("value")))
+            )
+          ))
+        ).bind("write_expr");
+  Finder->addMatcher(MaskedWriteMatcher, this);
 
   /*
   auto VolatileDeclRefAssignment = varDecl(hasInitializer(explicitCastExpr(
@@ -72,22 +86,48 @@ void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedValue = Result.Nodes.getNodeAs<IntegerLiteral>("value");
   const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
   const auto *MatchedLocation = Result.Nodes.getNodeAs<Expr>("write_expr");
+
+  const auto *MatchedMask = Result.Nodes.getNodeAs<IntegerLiteral>("mask");
+
+  DEBUG(llvm::errs() << "Matched expression\n");
+
   if (!MatchedValue || !MatchedAddress || !MatchedLocation) {
-  //if (!MatchedAddress || !MatchedLocation) {
     return;
   }
 
-  Address k1 = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
-  ValueT k2 = static_cast<ValueT>(MatchedValue->getValue().getLimitedValue());
-  if (addressMap.find(k1) == addressMap.end()) {
-      return;
-  }
-  if (addressMap[k1].values.find(k2) == addressMap[k1].values.end()) {
-      return;
+  Address address = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
+  ValueT value = static_cast<ValueT>(MatchedValue->getValue().getLimitedValue());
+
+  if (addressMap.find(address) == addressMap.end()) {
+    DEBUG(llvm::errs() << "address not in map!\n");
+    return;
   }
 
-  // cast the matched integer literal as a 32-bit unsigned
-  std::string replacement = "apply(write(" + addressMap[k1].values[k2] + "))";
+  const auto r = addressMap[address];
+  std::string replacement = "";
+
+  if (MatchedMask) {
+    // Invert the mask, since it describes fields we aren't touching
+    ValueT mask = UINT32_MAX - static_cast<ValueT>(MatchedMask->getValue().getLimitedValue());
+
+    if (r.fields.find(mask) != r.fields.end()) {
+      auto field = r.fields.at(mask);
+      if (field.values.find(value) == field.values.end()) {
+        // Raw write to field
+        replacement = "apply(write(" + r.name + "::" + field.name + ", " + std::to_string(value) + "))";
+      } else {
+        replacement = "apply(write(" + r.name + "::" + field.name + "ValC::" + field.values.at(value) + "))";
+      }
+    } else {
+        DEBUG(llvm::errs() << "Found decomposition case\n");
+      // The mask might describe multiple fields,
+      // in which case we need try to decompose the mask into constituent parts
+      replacement = "apply(write(" + DecomposeIntoFields(r, mask, value) + "))";
+      return;
+    }
+  } else {
+    replacement = "apply(write(" + DecomposeIntoFields(r, 0xFFFFFFFF, value) + "))";
+  }
   auto ReplacementRange = CharSourceRange::getTokenRange(MatchedLocation->getLocStart(), MatchedLocation->getLocEnd());
 
   diag(MatchedLocation->getLocStart(), "Found write to register via volatile cast")

@@ -4,6 +4,8 @@
 
 #include <fstream>
 
+#define DEBUG_TYPE ""
+
 using namespace clang::ast_matchers;
 
 namespace clang {
@@ -29,9 +31,8 @@ ReadYamlErrorCode ReadDescriptionYAML(std::string const& name, AddressNameMap& a
   yamlIn >> registers;
 
   for (const auto& reg : registers) {
-    // addressMap[std::make_pair(reg.address, reg.value)] = reg.registerName;
     addressMap[reg.address].name = reg.name;
-    // DEBUG(llvm::dbgs() << "Added register: " << reg.address << "," << reg.name << "\n" );
+    DEBUG(llvm::dbgs() << "Added register: " << reg.address << "," << reg.name << "\n" );
     for (const auto& field : reg.fields) {
       addressMap[reg.address].fields[field.mask].name = field.name;
       for (const auto& value : field.values) {
@@ -42,12 +43,65 @@ ReadYamlErrorCode ReadDescriptionYAML(std::string const& name, AddressNameMap& a
   return ReadYamlErrorCode::Success;
 }
 
-internal::BindableMatcher<clang::Stmt> DereferencedPointerCastMatcher() {
-  return unaryOperator(hasOperatorName("*"), hasUnaryOperand(
-            explicitCastExpr(
-                hasDestinationType(isAnyPointer()),
-                hasSourceExpression(integerLiteral().bind("address")))));
+VariadicMatcherT DereferencedVolatileCastMatcher() {
+  return allOf(unaryOperator(
+                   hasOperatorName("*"),
+                   hasUnaryOperand(explicitCastExpr(
+                       hasDestinationType(isAnyPointer()),
+                       hasSourceExpression(integerLiteral().bind("address"))))),
+               expr(hasType(isVolatileQualified())));
 }
+
+clang::ast_matchers::internal::Matcher<clang::Expr> MaskMatcher() {
+  return ignoringParenImpCasts(binaryOperator(
+                hasOperatorName("&"),
+                hasEitherOperand(ignoringParenImpCasts(DereferencedVolatileCastMatcher())),
+                hasEitherOperand(ignoringParenImpCasts(integerLiteral().bind("mask")))));
+}
+
+std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask) {
+  std::string fields = "";
+
+  for (const auto& field_pairs : reg.fields) {
+    if ((field_pairs.first & mask) > 0) {
+      // this field matches. try to match a value 
+      fields += reg.name + "::" + field_pairs.second.name;
+      break;
+    }
+  }
+
+  return fields.substr(0, fields.length() - 3);
+}
+
+
+// Write case
+std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask, const ValueT value) {
+  std::string fields = "";
+
+  for (const auto& field_pairs : reg.fields) {
+    if ((field_pairs.first & mask) > 0) {
+      // this field matches. try to match a value 
+      for (const auto& value_pairs : field_pairs.second.values) {
+        if ((value & field_pairs.first) > 0 || (field_pairs.first == 0 && value == 0)) {
+          fields += reg.name + "::" + field_pairs.second.name + "ValC::" + value_pairs.second + ", ";
+          break;
+        }
+      }
+    }
+  }
+
+  return fields.substr(0, fields.length() - 3);
+}
+
+std::string GetAllFields(const MapEntry& reg) {
+  std::string fields = "";
+  // Assume if no mask is specified that we're writing to all registers.
+  for (const auto& field_pairs : reg.fields) {
+    fields += reg.name + "::" + field_pairs.second.name + ", ";
+  }
+  return fields.substr(0, fields.length() - 3);
+}
+
 
 } // namespace embedded
 } // namespace tidy

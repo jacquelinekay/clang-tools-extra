@@ -2,7 +2,7 @@
   name: Deadbeef
   fields:
   - name: field1
-    mask: 0x1
+    mask: 0xF
     values:
     - value: 0x0
       name: v00
@@ -14,3 +14,4 @@
     - value: 0x0
       name: v00
     - value: 0xDEADBEE0
+      name: enable
