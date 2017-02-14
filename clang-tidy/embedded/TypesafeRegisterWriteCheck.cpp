@@ -110,6 +110,7 @@ void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
     // Invert the mask, since it describes fields we aren't touching
     ValueT mask = UINT32_MAX - static_cast<ValueT>(MatchedMask->getValue().getLimitedValue());
 
+    // TODO Special case for when the field has no predefined values
     if (r.fields.find(mask) != r.fields.end()) {
       auto field = r.fields.at(mask);
       if (field.values.find(value) == field.values.end()) {

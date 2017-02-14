@@ -58,6 +58,7 @@ void TypesafeRegisterReadCheck::check(const MatchFinder::MatchResult &Result) {
   if (MatchedMask) {
     // Get the name from the map
     ValueT mask = UINT32_MAX - static_cast<ValueT>(MatchedMask->getValue().getLimitedValue());
+    // TODO Special case for when the field has no predefined values
     if (reg.fields.find(mask) != reg.fields.end()) {
       replacement = "apply(read(" + reg.name + "::" + reg.fields.at(mask).name + "))";
     } else {

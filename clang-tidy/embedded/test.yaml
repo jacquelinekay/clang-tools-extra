@@ -15,3 +15,8 @@
       name: v00
     - value: 0xDEADBEE0
       name: enable
+- address: 0x00001000
+  name: Reset
+  fields:
+    - name: field1
+      mask: 0xF
