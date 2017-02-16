@@ -46,10 +46,21 @@ void TypesafeRegisterReadCheck::registerMatchers(MatchFinder *Finder) {
 }
 
 void TypesafeRegisterReadCheck::check(const MatchFinder::MatchResult &Result) {
-  const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
+  const auto *MatchedAddress = Result.Nodes.getNodeAs<Expr>("address");
   const auto *MatchedExpr = Result.Nodes.getNodeAs<Expr>("read_expr");
   const auto *MatchedMask = Result.Nodes.getNodeAs<IntegerLiteral>("mask");
-  Address address = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
+  if (!MatchedAddress || !MatchedExpr || !Result.Context) {
+    return;
+  }
+
+  llvm::APSInt evaluatedInt;
+  if (!MatchedAddress->EvaluateAsInt(evaluatedInt, *Result.Context)) {
+    DEBUG(llvm::errs() << "Couldn't evaluate address expression as an integer\n");
+    return;
+  }
+
+  Address address = static_cast<Address>(evaluatedInt.getLimitedValue());
+  // Address address = static_cast<Address>(MatchedAddress->EvaluateAsInt().getValue().getLimitedValue());
   if (addressMap.find(address) == addressMap.end()) {
       return;
   }

@@ -12,6 +12,8 @@
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
 
+#include "llvm/IR/Constants.h"
+
 #define DEBUG_TYPE ""
 
 using namespace clang::ast_matchers;
@@ -33,16 +35,12 @@ void TypesafeRegisterWriteCheck::storeOptions(
 }
 
 void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
-  // this will only be a "write" check
 
   // TODO: Make sure we are referencing the same register within the same expression.
   // TODO: writing known values vs. writing arbitrary values
   // TODO combining writes
   // TODO reset (set to clear)
   // TODO clear
-  // write(peripheralName::registerName, value)
-  // vs.
-  // write(peripheralName::registerName::knownValue)
 
   auto DereferencedVolatilePointer = DereferencedVolatileCastMatcher();
 
@@ -68,10 +66,6 @@ void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
   Finder->addMatcher(MaskedWriteMatcher, this);
 
   /*
-  auto VolatileDeclRefAssignment = varDecl(hasInitializer(explicitCastExpr(
-                hasDestinationType(isAnyPointer()),
-                hasSourceExpression(integerLiteral().bind("address"))))).bind("var_decl");
-
   // TODO Not binding to the address properly here
   auto IndirectWriteMatcher = binaryOperator(
       hasOperatorName("="),
@@ -84,18 +78,23 @@ void TypesafeRegisterWriteCheck::registerMatchers(MatchFinder *Finder) {
 
 void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedValue = Result.Nodes.getNodeAs<IntegerLiteral>("value");
-  const auto *MatchedAddress = Result.Nodes.getNodeAs<IntegerLiteral>("address");
+  const auto *MatchedAddress = Result.Nodes.getNodeAs<Expr>("address");
   const auto *MatchedLocation = Result.Nodes.getNodeAs<Expr>("write_expr");
-
   const auto *MatchedMask = Result.Nodes.getNodeAs<IntegerLiteral>("mask");
+  Address address = 0;
 
   DEBUG(llvm::errs() << "Matched expression\n");
 
-  if (!MatchedValue || !MatchedAddress || !MatchedLocation) {
+  if (!MatchedValue || !MatchedAddress || !MatchedLocation || !Result.Context) {
     return;
   }
 
-  Address address = static_cast<Address>(MatchedAddress->getValue().getLimitedValue());
+  const Expr* currentExpr = MatchedAddress;
+  if (!evaluateDiscardingPointerCasts(currentExpr, address, *Result.Context)) {
+    DEBUG(llvm::errs() << "Couldn't evaluate expression as int\n");
+    return;
+  }
+
   ValueT value = static_cast<ValueT>(MatchedValue->getValue().getLimitedValue());
 
   if (addressMap.find(address) == addressMap.end()) {
@@ -115,7 +114,7 @@ void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
       auto field = r.fields.at(mask);
       if (field.values.find(value) == field.values.end()) {
         // Raw write to field
-        replacement = "apply(write(" + r.name + "::" + field.name + ", " + std::to_string(value) + "))";
+        replacement = "apply(write(" + r.name + "::" + field.name + ", " + AsHex(value) + "))";
       } else {
         replacement = "apply(write(" + r.name + "::" + field.name + "ValC::" + field.values.at(value) + "))";
       }

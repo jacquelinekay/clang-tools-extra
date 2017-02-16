@@ -58,11 +58,15 @@ VariadicMatcherT DereferencedVolatileCastMatcher();
 clang::ast_matchers::internal::Matcher<clang::Expr> MaskMatcher();
 
 // Given a mask and an MapEntry, return a sequence of Fields that the mask touches
-std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask);
+std::string DecomposeIntoFields(const MapEntry& reg, ValueT mask);
 
-std::string DecomposeIntoFields(const MapEntry& reg, const ValueT mask, const ValueT value);
+std::string DecomposeIntoFields(const MapEntry& reg, ValueT mask, ValueT value);
 
 std::string GetAllFields(const MapEntry& reg);
+
+std::string AsHex(ValueT n);
+
+bool evaluateDiscardingPointerCasts(const Expr* curentExpr, Address& address, ASTContext& context);
 
 } // namespace embedded
 } // namespace tidy
@@ -86,7 +90,7 @@ struct MappingTraits<clang::tidy::embedded::RegisterField> {
     // TODO
     io.mapRequired("name",  entry.name);
     io.mapRequired("mask", entry.mask);
-    io.mapRequired("values", entry.values);
+    io.mapOptional("values", entry.values);
   }
 };
 
