@@ -46,13 +46,6 @@ ReadYamlErrorCode ReadDescriptionYAML(std::string const& name, AddressNameMap& a
 }
 
 VariadicMatcherT DereferencedVolatileCastMatcher() {
-  // Important
-  // operand is not necessarily an integer literal.
-  /*
-  auto addressExpr = anyOf(integerLiteral().bind("address"),
-      binaryOperator(hasEitherOperand(CastExpr(expr().bind("address_operand")))
-      );
-      */
   return allOf(unaryOperator(
                    hasOperatorName("*"),
                    hasUnaryOperand(ignoringParenImpCasts(explicitCastExpr(
@@ -128,31 +121,30 @@ std::string AsHex(ValueT n) {
 // Aggressively get the value of any integerLiterals in this expression and try to evaluate
 // the expression without pointer casts
 bool evaluateDiscardingPointerCasts(const Expr* currentExpr, Address& address, ASTContext& context) {
+  if (!currentExpr) {
+    DEBUG(llvm::errs() << "received null expr\n");
+    return false;
+  }
+
+  currentExpr = currentExpr->IgnoreParenCasts();
+  currentExpr = currentExpr->IgnoreImplicit();
+  currentExpr = currentExpr->IgnoreConversionOperator();
+
   llvm::APSInt evaluatedInt;
   if (currentExpr->EvaluateAsInt(evaluatedInt, context)) {
     address = evaluatedInt.getLimitedValue();
     return true;
   }
-  if (const clang::ParenExpr* paren = dyn_cast<const clang::ParenExpr>(currentExpr)) {
-    return evaluateDiscardingPointerCasts(paren->getSubExpr(), address, context);
-  }
-  if (const clang::CastExpr* cast = dyn_cast<const clang::CastExpr>(currentExpr)) {
-    // get the cast operand as an integer, sum it to the total
-    // TODO check the type of the cast, Ignoring imp casts, etc. convert DeclrefExpr
-    //
-    if (const clang::IntegerLiteral* lit = dyn_cast<const clang::IntegerLiteral>(cast->getSubExpr())) {
-      address = lit->getValue().getLimitedValue();
-      return true;
-    }
-    return evaluateDiscardingPointerCasts(cast->getSubExpr(), address, context);
-  }
+
   if (const clang::BinaryOperator* op = dyn_cast<clang::BinaryOperator>(currentExpr)) {
     // Evaluate each operand separately, trying to discard pointer casts, then apply the operand
     Address result1, result2;
     if (!evaluateDiscardingPointerCasts(op->getLHS(), result1, context)) {
+      DEBUG(llvm::errs() << "failed to evaluate LHS\n");
       return false;
     }
     if (!evaluateDiscardingPointerCasts(op->getRHS(), result2, context)) {
+      DEBUG(llvm::errs() << "failed to evaluate RHS\n");
       return false;
     }
     if (op->isAdditiveOp()) {
@@ -165,13 +157,17 @@ bool evaluateDiscardingPointerCasts(const Expr* currentExpr, Address& address, A
       } else if (op->getOpcode() == clang::BinaryOperatorKind::BO_Shr) {
         address = result1 >> result2;
       } else {
+        DEBUG(llvm::errs() << "unrecognized shift opcode\n");
         return false;
       }
     } else {
+      DEBUG(llvm::errs() << "unrecognized binary opcode\n");
       return false;
     }
     return true;
   }
+
+  DEBUG(llvm::errs() << "tried to evaluate something that wasn't a cast, paren, or binary op\n");
   return false;
 }
 
