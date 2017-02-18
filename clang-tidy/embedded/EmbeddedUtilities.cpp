@@ -99,7 +99,7 @@ std::string DecomposeIntoFields(const MapEntry& reg, ValueT mask, ValueT value) 
     }
   }
 
-  return fields.substr(0, fields.length() - 3);
+  return fields.substr(0, fields.length() - 2);
 }
 
 std::string GetAllFields(const MapEntry& reg) {
@@ -108,7 +108,7 @@ std::string GetAllFields(const MapEntry& reg) {
   for (const auto& field_pairs : reg.fields) {
     fields += reg.name + "::" + field_pairs.second.name + ", ";
   }
-  return fields.substr(0, fields.length() - 3);
+  return fields.substr(0, fields.length() - 2);
 }
 
 std::string AsHex(ValueT n) {

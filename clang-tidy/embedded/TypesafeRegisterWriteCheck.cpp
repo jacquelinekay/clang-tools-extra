@@ -117,9 +117,10 @@ void TypesafeRegisterWriteCheck::check(const MatchFinder::MatchResult &Result) {
         replacement = "apply(write(" + r.name + "::" + field.name + ", " + AsHex(value) + "))";
       } else {
         replacement = "apply(write(" + r.name + "::" + field.name + "ValC::" + field.values.at(value) + "))";
+        DEBUG(llvm::errs() << "string: " << replacement + "\n");
       }
     } else {
-        DEBUG(llvm::errs() << "Found decomposition case\n");
+      DEBUG(llvm::errs() << "Found decomposition case\n");
       // The mask might describe multiple fields,
       // in which case we need try to decompose the mask into constituent parts
       replacement = "apply(write(" + DecomposeIntoFields(r, mask, value) + "))";
