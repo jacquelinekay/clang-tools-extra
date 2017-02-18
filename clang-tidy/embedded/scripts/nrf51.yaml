@@ -1,0 +1,7976 @@
+---
+- address: 0x40000544
+  fields:
+  - mask: 0x1
+    name: reset
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: power_reset
+- address: 0x40000500
+  fields:
+  - mask: 0x1
+    name: systemoff
+  name: power_systemoff
+- address: 0x40000554
+  fields:
+  - mask: 0x1
+    name: onram2
+    values:
+    - name: ram2off
+      value: 0x0
+    - name: ram2on
+      value: 0x1
+  - mask: 0x2
+    name: onram3
+    values:
+    - name: ram3off
+      value: 0x0
+    - name: ram3on
+      value: 0x1
+  - mask: 0x10000
+    name: offram2
+    values:
+    - name: ram2off
+      value: 0x0
+    - name: ram2on
+      value: 0x1
+  - mask: 0x20000
+    name: offram3
+    values:
+    - name: ram3off
+      value: 0x0
+    - name: ram3on
+      value: 0x1
+  name: power_ramonb
+- address: 0x40000428
+  fields:
+  - mask: 0x1
+    name: ramblock0
+    values:
+    - name: 'off'
+      value: 0x0
+    - name: 'on'
+      value: 0x1
+  - mask: 0x2
+    name: ramblock1
+    values:
+    - name: 'off'
+      value: 0x0
+    - name: 'on'
+      value: 0x1
+  - mask: 0x4
+    name: ramblock2
+    values:
+    - name: 'off'
+      value: 0x0
+    - name: 'on'
+      value: 0x1
+  - mask: 0x8
+    name: ramblock3
+    values:
+    - name: 'off'
+      value: 0x0
+    - name: 'on'
+      value: 0x1
+  name: power_ramstatus
+- address: 0x40000078
+  fields:
+  - mask: 0x7f8
+    name: tasks_constlat
+  name: power_tasks_constlat
+- address: 0x4000051c
+  fields:
+  - mask: 0xff
+    name: gpregret
+  name: power_gpregret
+- address: 0x40000578
+  fields:
+  - mask: 0x1
+    name: dcdcen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: power_dcdcen
+- address: 0x40000a08
+  fields:
+  - mask: 0x1
+    name: forceoff
+    values:
+    - name: noforce
+      value: 0x0
+    - name: force
+      value: 0x1
+  - mask: 0x2
+    name: forceon
+    values:
+    - name: noforce
+      value: 0x0
+    - name: force
+      value: 0x1
+  name: power_dcdcforce
+- address: 0x40000304
+  fields:
+  - mask: 0x4
+    name: pofwarn
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: power_intenset
+- address: 0x40000308
+  fields:
+  - mask: 0x4
+    name: pofwarn
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: power_intenclr
+- address: 0x40000524
+  fields:
+  - mask: 0x1
+    name: onram0
+    values:
+    - name: ram0off
+      value: 0x0
+    - name: ram0on
+      value: 0x1
+  - mask: 0x2
+    name: onram1
+    values:
+    - name: ram1off
+      value: 0x0
+    - name: ram1on
+      value: 0x1
+  - mask: 0x10000
+    name: offram0
+    values:
+    - name: ram0off
+      value: 0x0
+    - name: ram0on
+      value: 0x1
+  - mask: 0x20000
+    name: offram1
+    values:
+    - name: ram1off
+      value: 0x0
+    - name: ram1on
+      value: 0x1
+  name: power_ramon
+- address: 0x4000007c
+  fields:
+  - mask: 0x3fc
+    name: tasks_lowpwr
+  name: power_tasks_lowpwr
+- address: 0x40000108
+  fields:
+  - mask: 0x7f8
+    name: events_pofwarn
+  name: power_events_pofwarn
+- address: 0x40000510
+  fields:
+  - mask: 0x1
+    name: pof
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x6
+    name: threshold
+    values:
+    - name: v21
+      value: 0x0
+    - name: v23
+      value: 0x1
+    - name: v25
+      value: 0x2
+    - name: v27
+      value: 0x3
+  name: power_pofcon
+- address: 0x40000400
+  fields:
+  - mask: 0x1
+    name: resetpin
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x2
+    name: dog
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x4
+    name: sreq
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x8
+    name: lockup
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x10000
+    name: 'off'
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x20000
+    name: lpcomp
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  - mask: 0x40000
+    name: dif
+    values:
+    - name: notdetected
+      value: 0x0
+    - name: detected
+      value: 0x1
+  name: power_resetreas
+- address: 0x40000408
+  fields:
+  - mask: 0x1
+    name: status
+    values:
+    - name: nottriggered
+      value: 0x0
+    - name: triggered
+      value: 0x1
+  name: clock_hfclkrun
+- address: 0x40000004
+  fields:
+  - mask: 0x3fc
+    name: tasks_hfclkstop
+  name: clock_tasks_hfclkstop
+- address: 0x40000104
+  fields:
+  - mask: 0x3fc
+    name: events_lfclkstarted
+  name: clock_events_lfclkstarted
+- address: 0x40000550
+  fields:
+  - mask: 0xff
+    name: xtalfreq
+    values:
+    - name: v16mhz
+      value: 0xff
+    - name: v32mhz
+      value: 0x0
+  name: clock_xtalfreq
+- address: 0x40000000
+  fields:
+  - mask: 0xff
+    name: tasks_hfclkstart
+  name: clock_tasks_hfclkstart
+- address: 0x40000308
+  fields:
+  - mask: 0x1
+    name: hfclkstarted
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: lfclkstarted
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: done
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: ctto
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: clock_intenclr
+- address: 0x40000538
+  fields:
+  - mask: 0x7f
+    name: ctiv
+  name: clock_ctiv
+- address: 0x40000518
+  fields:
+  - mask: 0x3
+    name: src
+    values:
+    - name: rc
+      value: 0x0
+    - name: xtal
+      value: 0x1
+    - name: synth
+      value: 0x2
+  name: clock_lfclksrc
+- address: 0x40000010
+  fields:
+  - mask: 0xff0
+    name: tasks_cal
+  name: clock_tasks_cal
+- address: 0x4000010c
+  fields:
+  - mask: 0x3fc
+    name: events_done
+  name: clock_events_done
+- address: 0x40000418
+  fields:
+  - mask: 0x3
+    name: src
+    values:
+    - name: rc
+      value: 0x0
+    - name: xtal
+      value: 0x1
+    - name: synth
+      value: 0x2
+  - mask: 0x10000
+    name: state
+    values:
+    - name: notrunning
+      value: 0x0
+    - name: running
+      value: 0x1
+  name: clock_lfclkstat
+- address: 0x40000014
+  fields:
+  - mask: 0x3fc
+    name: tasks_ctstart
+  name: clock_tasks_ctstart
+- address: 0x40000304
+  fields:
+  - mask: 0x1
+    name: hfclkstarted
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: lfclkstarted
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: done
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: ctto
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: clock_intenset
+- address: 0x40000110
+  fields:
+  - mask: 0xff0
+    name: events_ctto
+  name: clock_events_ctto
+- address: 0x4000000c
+  fields:
+  - mask: 0x3fc
+    name: tasks_lfclkstop
+  name: clock_tasks_lfclkstop
+- address: 0x4000041c
+  fields:
+  - mask: 0x3
+    name: src
+    values:
+    - name: rc
+      value: 0x0
+    - name: xtal
+      value: 0x1
+    - name: synth
+      value: 0x2
+  name: clock_lfclksrccopy
+- address: 0x40000100
+  fields:
+  - mask: 0xff00
+    name: events_hfclkstarted
+  name: clock_events_hfclkstarted
+- address: 0x4000040c
+  fields:
+  - mask: 0x1
+    name: src
+    values:
+    - name: rc
+      value: 0x0
+    - name: xtal
+      value: 0x1
+  - mask: 0x10000
+    name: state
+    values:
+    - name: notrunning
+      value: 0x0
+    - name: running
+      value: 0x1
+  name: clock_hfclkstat
+- address: 0x40000008
+  fields:
+  - mask: 0x7f8
+    name: tasks_lfclkstart
+  name: clock_tasks_lfclkstart
+- address: 0x40000018
+  fields:
+  - mask: 0x7f8
+    name: tasks_ctstop
+  name: clock_tasks_ctstop
+- address: 0x40000414
+  fields:
+  - mask: 0x1
+    name: status
+    values:
+    - name: nottriggered
+      value: 0x0
+    - name: triggered
+      value: 0x1
+  name: clock_lfclkrun
+- address: 0x40000528
+  fields:
+  - mask: 0x1
+    name: power_clock
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x2
+    name: radio
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x4
+    name: uart0
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x8
+    name: spi0_twi0
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x10
+    name: spi1_twi1
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x40
+    name: gpiote
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x80
+    name: adc
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x100
+    name: timer0
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x200
+    name: timer1
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x400
+    name: timer2
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x800
+    name: rtc0
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x1000
+    name: temp
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x2000
+    name: rng
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x4000
+    name: ecb
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x8000
+    name: ccm_aar
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x10000
+    name: wdt
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x20000
+    name: rtc1
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x40000
+    name: qdec
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x80000
+    name: lpcomp
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x40000000
+    name: nvmc
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  - mask: 0x80000000
+    name: ppi
+    values:
+    - name: inregion0
+      value: 0x1
+    - name: inregion1
+      value: 0x0
+  name: mpu_perr0
+- address: 0x4000052c
+  fields:
+  - mask: 0x3fc
+    name: rlenr0
+  name: mpu_rlenr0
+- address: 0x4000060c
+  fields:
+  - mask: 0x3
+    name: protblocksize
+  name: mpu_protblocksize
+- address: 0x40000608
+  fields:
+  - mask: 0x1
+    name: disableindebug
+    values:
+    - name: enabled
+      value: 0x0
+    - name: disabled
+      value: 0x1
+  name: mpu_disableindebug
+- address: 0x40000600
+  fields:
+  - mask: 0x1
+    name: protreg0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: protreg1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: protreg2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: protreg3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: protreg4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: protreg5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: protreg6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: protreg7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100
+    name: protreg8
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: protreg9
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: protreg10
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800
+    name: protreg11
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000
+    name: protreg12
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000
+    name: protreg13
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: protreg14
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000
+    name: protreg15
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: protreg16
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: protreg17
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: protreg18
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: protreg19
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100000
+    name: protreg20
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200000
+    name: protreg21
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400000
+    name: protreg22
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800000
+    name: protreg23
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000000
+    name: protreg24
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000000
+    name: protreg25
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000000
+    name: protreg26
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000000
+    name: protreg27
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000000
+    name: protreg28
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000000
+    name: protreg29
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000000
+    name: protreg30
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: protreg31
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: mpu_protenset0
+- address: 0x40000604
+  fields:
+  - mask: 0x1
+    name: protreg32
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: protreg33
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: protreg34
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: protreg35
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: protreg36
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: protreg37
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: protreg38
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: protreg39
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100
+    name: protreg40
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: protreg41
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: protreg42
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800
+    name: protreg43
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000
+    name: protreg44
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000
+    name: protreg45
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: protreg46
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000
+    name: protreg47
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: protreg48
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: protreg49
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: protreg50
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: protreg51
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100000
+    name: protreg52
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200000
+    name: protreg53
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400000
+    name: protreg54
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800000
+    name: protreg55
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000000
+    name: protreg56
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000000
+    name: protreg57
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000000
+    name: protreg58
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000000
+    name: protreg59
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000000
+    name: protreg60
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000000
+    name: protreg61
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000000
+    name: protreg62
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: protreg63
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: mpu_protenset1
+- address: 0x40001128
+  fields:
+  - mask: 0x7f8
+    name: events_bcmatch
+  name: radio_events_bcmatch
+- address: 0x40001114
+  fields:
+  - mask: 0x3fc
+    name: events_devmatch
+  name: radio_events_devmatch
+- address: 0x40001020
+  fields:
+  - mask: 0x1fe0
+    name: tasks_bcstop
+  name: radio_tasks_bcstop
+- address: 0x40001018
+  fields:
+  - mask: 0x7f8
+    name: tasks_rssistop
+  name: radio_tasks_rssistop
+- address: 0x40001524
+  fields:
+  - mask: 0xff
+    name: ap0
+  - mask: 0xff00
+    name: ap1
+  - mask: 0xff0000
+    name: ap2
+  - mask: 0xff000000
+    name: ap3
+  name: radio_prefix0
+- address: 0x40001560
+  fields:
+  - mask: 0x1fe0
+    name: bcc
+  name: radio_bcc
+- address: 0x40001538
+  fields:
+  - mask: 0xffffff
+    name: crcpoly
+  name: radio_crcpoly
+- address: 0x40001010
+  fields:
+  - mask: 0xff0
+    name: tasks_disable
+  name: radio_tasks_disable
+- address: 0x40001670
+  fields:
+  - mask: 0xff0
+    name: dab0
+  name: radio_dab0
+- address: 0x4000151c
+  fields:
+  - mask: 0x3fc
+    name: base0
+  name: radio_base0
+- address: 0x4000153c
+  fields:
+  - mask: 0xffffff
+    name: crcinit
+  name: radio_crcinit
+- address: 0x40001640
+  fields:
+  - mask: 0x1
+    name: ena0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: ena1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: ena2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: ena3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: ena4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20
+    name: ena5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40
+    name: ena6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80
+    name: ena7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x100
+    name: txadd0
+  - mask: 0x200
+    name: txadd1
+  - mask: 0x400
+    name: txadd2
+  - mask: 0x800
+    name: txadd3
+  - mask: 0x1000
+    name: txadd4
+  - mask: 0x2000
+    name: txadd5
+  - mask: 0x4000
+    name: txadd6
+  - mask: 0x8000
+    name: txadd7
+  name: radio_dacnf
+- address: 0x40001ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_power
+- address: 0x4000110c
+  fields:
+  - mask: 0x3fc
+    name: events_end
+  name: radio_events_end
+- address: 0x4000111c
+  fields:
+  - mask: 0x3fc
+    name: events_rssiend
+  name: radio_events_rssiend
+- address: 0x40001724
+  fields:
+  - mask: 0xffffffff
+    name: override0
+  name: radio_override0
+- address: 0x40001730
+  fields:
+  - mask: 0xffffffff
+    name: override3
+  name: radio_override3
+- address: 0x4000172c
+  fields:
+  - mask: 0xffffffff
+    name: override2
+  name: radio_override2
+- address: 0x40001410
+  fields:
+  - mask: 0x7
+    name: dai
+  name: radio_dai
+- address: 0x40001304
+  fields:
+  - mask: 0x1
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: address
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: payload
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: disabled
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: devmatch
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: devmiss
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: rssiend
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: bcmatch
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: radio_intenset
+- address: 0x40001534
+  fields:
+  - mask: 0x3
+    name: len
+    values:
+    - name: disabled
+      value: 0x0
+    - name: one
+      value: 0x1
+    - name: two
+      value: 0x2
+    - name: three
+      value: 0x3
+  - mask: 0x100
+    name: skipaddr
+    values:
+    - name: include
+      value: 0x0
+    - name: skip
+      value: 0x1
+  name: radio_crccnf
+- address: 0x40001008
+  fields:
+  - mask: 0x7f8
+    name: tasks_start
+  name: radio_tasks_start
+- address: 0x40001510
+  fields:
+  - mask: 0x3
+    name: mode
+    values:
+    - name: nrf_1mbit
+      value: 0x0
+    - name: nrf_2mbit
+      value: 0x1
+    - name: nrf_250kbit
+      value: 0x2
+    - name: ble_1mbit
+      value: 0x3
+  name: radio_mode
+- address: 0x40001000
+  fields:
+  - mask: 0xff
+    name: tasks_txen
+  name: radio_tasks_txen
+- address: 0x40001100
+  fields:
+  - mask: 0xff00
+    name: events_ready
+  name: radio_events_ready
+- address: 0x40001734
+  fields:
+  - mask: 0xfffffff
+    name: override4
+  - mask: 0x80000000
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_override4
+- address: 0x40001514
+  fields:
+  - mask: 0xf
+    name: lflen
+  - mask: 0x100
+    name: s0len
+  - mask: 0xf0000
+    name: s1len
+  name: radio_pcnf0
+- address: 0x40001518
+  fields:
+  - mask: 0xff
+    name: maxlen
+  - mask: 0xff00
+    name: statlen
+  - mask: 0x70000
+    name: balen
+  - mask: 0x1000000
+    name: endian
+    values:
+    - name: little
+      value: 0x0
+    - name: big
+      value: 0x1
+  - mask: 0x2000000
+    name: whiteen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_pcnf1
+- address: 0x40001108
+  fields:
+  - mask: 0x7f8
+    name: events_payload
+  name: radio_events_payload
+- address: 0x4000100c
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: radio_tasks_stop
+- address: 0x40001548
+  fields:
+  - mask: 0x7f
+    name: rssisample
+  name: radio_rssisample
+- address: 0x40001690
+  fields:
+  - mask: 0xffff
+    name: dap
+  name: radio_dap0
+- address: 0x40001200
+  fields:
+  - mask: 0x1
+    name: ready_start
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: end_disable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: disabled_txen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: disabled_rxen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: address_rssistart
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20
+    name: end_start
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40
+    name: address_bcstart
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x100
+    name: disabled_rssistop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_shorts
+- address: 0x40001728
+  fields:
+  - mask: 0xffffffff
+    name: override1
+  name: radio_override1
+- address: 0x40001408
+  fields:
+  - mask: 0x7
+    name: rxmatch
+  name: radio_rxmatch
+- address: 0x4000152c
+  fields:
+  - mask: 0x7
+    name: txaddress
+  name: radio_txaddress
+- address: 0x40001528
+  fields:
+  - mask: 0xff
+    name: ap4
+  - mask: 0xff00
+    name: ap5
+  - mask: 0xff0000
+    name: ap6
+  - mask: 0xff000000
+    name: ap7
+  name: radio_prefix1
+- address: 0x40001118
+  fields:
+  - mask: 0x7f8
+    name: events_devmiss
+  name: radio_events_devmiss
+- address: 0x40001550
+  fields:
+  - mask: 0xf
+    name: state
+    values:
+    - name: disabled
+      value: 0x0
+    - name: rxru
+      value: 0x1
+    - name: rxidle
+      value: 0x2
+    - name: rx
+      value: 0x3
+    - name: rxdisable
+      value: 0x4
+    - name: txru
+      value: 0x9
+    - name: txidle
+      value: 0xa
+    - name: tx
+      value: 0xb
+    - name: txdisable
+      value: 0xc
+  name: radio_state
+- address: 0x40001308
+  fields:
+  - mask: 0x1
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: address
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: payload
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: disabled
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20
+    name: devmatch
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40
+    name: devmiss
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: rssiend
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400
+    name: bcmatch
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: radio_intenclr
+- address: 0x40001004
+  fields:
+  - mask: 0x3fc
+    name: tasks_rxen
+  name: radio_tasks_rxen
+- address: 0x40001520
+  fields:
+  - mask: 0x1fe0
+    name: base1
+  name: radio_base1
+- address: 0x40001544
+  fields:
+  - mask: 0xff
+    name: tifs
+  name: radio_tifs
+- address: 0x4000140c
+  fields:
+  - mask: 0xffffff
+    name: rxcrc
+  name: radio_rxcrc
+- address: 0x40001400
+  fields:
+  - mask: 0x1
+    name: crcstatus
+    values:
+    - name: crcerror
+      value: 0x0
+    - name: crcok
+      value: 0x1
+  name: radio_crcstatus
+- address: 0x40001554
+  fields:
+  - mask: 0x7f
+    name: datawhiteiv
+  name: radio_datawhiteiv
+- address: 0x40001530
+  fields:
+  - mask: 0x1
+    name: addr0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: addr1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: addr2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: addr3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: addr4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20
+    name: addr5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40
+    name: addr6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80
+    name: addr7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_rxaddresses
+- address: 0x4000150c
+  fields:
+  - mask: 0xff
+    name: txpower
+    values:
+    - name: pos4dbm
+      value: 0x4
+    - name: v0dbm
+      value: 0x0
+    - name: neg4dbm
+      value: 0xfc
+    - name: neg8dbm
+      value: 0xf8
+    - name: neg12dbm
+      value: 0xf4
+    - name: neg16dbm
+      value: 0xf0
+    - name: neg20dbm
+      value: 0xec
+    - name: neg30dbm
+      value: 0xd8
+  name: radio_txpower
+- address: 0x40001104
+  fields:
+  - mask: 0x3fc
+    name: events_address
+  name: radio_events_address
+- address: 0x40001508
+  fields:
+  - mask: 0x7f
+    name: frequency
+  name: radio_frequency
+- address: 0x4000101c
+  fields:
+  - mask: 0x3fc
+    name: tasks_bcstart
+  name: radio_tasks_bcstart
+- address: 0x40001014
+  fields:
+  - mask: 0x3fc
+    name: tasks_rssistart
+  name: radio_tasks_rssistart
+- address: 0x40001540
+  fields:
+  - mask: 0x1
+    name: constcarrier
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: plllock
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: radio_test
+- address: 0x40001110
+  fields:
+  - mask: 0xff0
+    name: events_disabled
+  name: radio_events_disabled
+- address: 0x40001504
+  fields:
+  - mask: 0x3fc
+    name: packetptr
+  name: radio_packetptr
+- address: 0x40002500
+  fields:
+  - mask: 0x7
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x4
+  name: uart0_enable
+- address: 0x4000256c
+  fields:
+  - mask: 0x1
+    name: hwfc
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0xe
+    name: parity
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x7
+  name: uart0_config
+- address: 0x40002000
+  fields:
+  - mask: 0xff
+    name: tasks_startrx
+  name: uart0_tasks_startrx
+- address: 0x40002124
+  fields:
+  - mask: 0x3fc
+    name: events_error
+  name: uart0_events_error
+- address: 0x40002510
+  fields:
+  - mask: 0xff0
+    name: pselcts
+  name: uart0_pselcts
+- address: 0x40002ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: uart0_power
+- address: 0x40002144
+  fields:
+  - mask: 0x3fc
+    name: events_rxto
+  name: uart0_events_rxto
+- address: 0x4000251c
+  fields:
+  - mask: 0xff
+    name: txd
+  name: uart0_txd
+- address: 0x40002304
+  fields:
+  - mask: 0x1
+    name: cts
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: ncts
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: rxdrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: txdrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: rxto
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: uart0_intenset
+- address: 0x40002104
+  fields:
+  - mask: 0x3fc
+    name: events_ncts
+  name: uart0_events_ncts
+- address: 0x4000200c
+  fields:
+  - mask: 0x3fc
+    name: tasks_stoptx
+  name: uart0_tasks_stoptx
+- address: 0x40002524
+  fields:
+  - mask: 0xffffffff
+    name: baudrate
+    values:
+    - name: baud1200
+      value: 0x4f000
+    - name: baud2400
+      value: 0x9d000
+    - name: baud4800
+      value: 0x13b000
+    - name: baud9600
+      value: 0x275000
+    - name: baud14400
+      value: 0x3b0000
+    - name: baud19200
+      value: 0x4ea000
+    - name: baud28800
+      value: 0x75f000
+    - name: baud31250
+      value: 0x800000
+    - name: baud38400
+      value: 0x9d5000
+    - name: baud56000
+      value: 0xe50000
+    - name: baud57600
+      value: 0xebf000
+    - name: baud76800
+      value: 0x13a9000
+    - name: baud115200
+      value: 0x1d7e000
+    - name: baud230400
+      value: 0x3afb000
+    - name: baud250000
+      value: 0x4000000
+    - name: baud460800
+      value: 0x75f7000
+    - name: baud921600
+      value: 0xebed000
+    - name: baud1m
+      value: 0x10000000
+  name: uart0_baudrate
+- address: 0x40002200
+  fields:
+  - mask: 0x8
+    name: cts_startrx
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: ncts_stoprx
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: uart0_shorts
+- address: 0x40002508
+  fields:
+  - mask: 0x7f8
+    name: pselrts
+  name: uart0_pselrts
+- address: 0x40002518
+  fields:
+  - mask: 0xff
+    name: rxd
+  name: uart0_rxd
+- address: 0x40002004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stoprx
+  name: uart0_tasks_stoprx
+- address: 0x40002308
+  fields:
+  - mask: 0x1
+    name: cts
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: ncts
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: rxdrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: txdrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: rxto
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: uart0_intenclr
+- address: 0x40002108
+  fields:
+  - mask: 0x7f8
+    name: events_rxdrdy
+  name: uart0_events_rxdrdy
+- address: 0x4000201c
+  fields:
+  - mask: 0x3fc
+    name: tasks_suspend
+  name: uart0_tasks_suspend
+- address: 0x40002514
+  fields:
+  - mask: 0x3fc
+    name: pselrxd
+  name: uart0_pselrxd
+- address: 0x4000211c
+  fields:
+  - mask: 0x3fc
+    name: events_txdrdy
+  name: uart0_events_txdrdy
+- address: 0x40002008
+  fields:
+  - mask: 0x7f8
+    name: tasks_starttx
+  name: uart0_tasks_starttx
+- address: 0x40002100
+  fields:
+  - mask: 0xff00
+    name: events_cts
+  name: uart0_events_cts
+- address: 0x4000250c
+  fields:
+  - mask: 0x3fc
+    name: pseltxd
+  name: uart0_pseltxd
+- address: 0x40002480
+  fields:
+  - mask: 0x1
+    name: overrun
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: parity
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: framing
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: break_
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: uart0_errorsrc
+- address: 0x40003500
+  fields:
+  - mask: 0x7
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: spi0_enable
+- address: 0x40003ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: spi0_power
+- address: 0x4000350c
+  fields:
+  - mask: 0x3fc
+    name: pselmosi
+  name: spi0_pselmosi
+- address: 0x40003508
+  fields:
+  - mask: 0x7f8
+    name: pselsck
+  name: spi0_pselsck
+- address: 0x4000351c
+  fields:
+  - mask: 0xff
+    name: txd
+  name: spi0_txd
+- address: 0x40003518
+  fields:
+  - mask: 0xff
+    name: rxd
+  name: spi0_rxd
+- address: 0x40003304
+  fields:
+  - mask: 0x4
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: spi0_intenset
+- address: 0x40003308
+  fields:
+  - mask: 0x4
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: spi0_intenclr
+- address: 0x40003510
+  fields:
+  - mask: 0xff0
+    name: pselmiso
+  name: spi0_pselmiso
+- address: 0x40003108
+  fields:
+  - mask: 0x7f8
+    name: events_ready
+  name: spi0_events_ready
+- address: 0x40003524
+  fields:
+  - mask: 0xffffffff
+    name: frequency
+    values:
+    - name: k125
+      value: 0x2000000
+    - name: k250
+      value: 0x4000000
+    - name: k500
+      value: 0x8000000
+    - name: m1
+      value: 0x10000000
+    - name: m2
+      value: 0x20000000
+    - name: m4
+      value: 0x40000000
+    - name: m8
+      value: 0x80000000
+  name: spi0_frequency
+- address: 0x40003554
+  fields:
+  - mask: 0x1
+    name: order
+    values:
+    - name: msbfirst
+      value: 0x0
+    - name: lsbfirst
+      value: 0x1
+  - mask: 0x2
+    name: cpha
+    values:
+    - name: leading
+      value: 0x0
+    - name: trailing
+      value: 0x1
+  - mask: 0x4
+    name: cpol
+    values:
+    - name: activehigh
+      value: 0x0
+    - name: activelow
+      value: 0x1
+  name: spi0_config
+- address: 0x40003500
+  fields:
+  - mask: 0x7
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x5
+  name: twi0_enable
+- address: 0x40003020
+  fields:
+  - mask: 0x1fe0
+    name: tasks_resume
+  name: twi0_tasks_resume
+- address: 0x40003000
+  fields:
+  - mask: 0xff
+    name: tasks_startrx
+  name: twi0_tasks_startrx
+- address: 0x40003138
+  fields:
+  - mask: 0x7f8
+    name: events_bb
+  name: twi0_events_bb
+- address: 0x40003124
+  fields:
+  - mask: 0x3fc
+    name: events_error
+  name: twi0_events_error
+- address: 0x40003ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: twi0_power
+- address: 0x4000350c
+  fields:
+  - mask: 0x3fc
+    name: pselsda
+  name: twi0_pselsda
+- address: 0x4000351c
+  fields:
+  - mask: 0xff
+    name: txd
+  name: twi0_txd
+- address: 0x40003304
+  fields:
+  - mask: 0x2
+    name: stopped
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: rxdready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: txdsent
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: bb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: suspended
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: twi0_intenset
+- address: 0x4000311c
+  fields:
+  - mask: 0x3fc
+    name: events_txdsent
+  name: twi0_events_txdsent
+- address: 0x40003014
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: twi0_tasks_stop
+- address: 0x40003200
+  fields:
+  - mask: 0x1
+    name: bb_suspend
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: bb_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: twi0_shorts
+- address: 0x40003518
+  fields:
+  - mask: 0xff
+    name: rxd
+  name: twi0_rxd
+- address: 0x40003308
+  fields:
+  - mask: 0x2
+    name: stopped
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: rxdready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: txdsent
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000
+    name: bb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: suspended
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: twi0_intenclr
+- address: 0x4000301c
+  fields:
+  - mask: 0x3fc
+    name: tasks_suspend
+  name: twi0_tasks_suspend
+- address: 0x40003104
+  fields:
+  - mask: 0x3fc
+    name: events_stopped
+  name: twi0_events_stopped
+- address: 0x40003508
+  fields:
+  - mask: 0x7f8
+    name: pselscl
+  name: twi0_pselscl
+- address: 0x40003008
+  fields:
+  - mask: 0x7f8
+    name: tasks_starttx
+  name: twi0_tasks_starttx
+- address: 0x40003524
+  fields:
+  - mask: 0xffffffff
+    name: frequency
+    values:
+    - name: k100
+      value: 0x1980000
+    - name: k250
+      value: 0x4000000
+    - name: k400
+      value: 0x6680000
+  name: twi0_frequency
+- address: 0x40003108
+  fields:
+  - mask: 0x7f8
+    name: events_rxdready
+  name: twi0_events_rxdready
+- address: 0x40003588
+  fields:
+  - mask: 0x7f
+    name: address
+  name: twi0_address
+- address: 0x400034c4
+  fields:
+  - mask: 0x1
+    name: overrun
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: anack
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: dnack
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: twi0_errorsrc
+- address: 0x40003148
+  fields:
+  - mask: 0x7f8
+    name: events_suspended
+  name: twi0_events_suspended
+- address: 0x40004500
+  fields:
+  - mask: 0x7
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x2
+  name: spis1_enable
+- address: 0x40004510
+  fields:
+  - mask: 0xff0
+    name: pselmosi
+  name: spis1_pselmosi
+- address: 0x40004400
+  fields:
+  - mask: 0x3
+    name: semstat
+    values:
+    - name: free
+      value: 0x0
+    - name: cpu
+      value: 0x1
+    - name: spis
+      value: 0x2
+    - name: cpupending
+      value: 0x3
+  name: spis1_semstat
+- address: 0x4000450c
+  fields:
+  - mask: 0x3fc
+    name: pselmiso
+  name: spis1_pselmiso
+- address: 0x40004538
+  fields:
+  - mask: 0xff
+    name: maxrx
+  name: spis1_maxrx
+- address: 0x4000455c
+  fields:
+  - mask: 0xff
+    name: def
+  name: spis1_def
+- address: 0x40004ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: spis1_power
+- address: 0x40004104
+  fields:
+  - mask: 0x3fc
+    name: events_end
+  name: spis1_events_end
+- address: 0x40004110
+  fields:
+  - mask: 0xff0
+    name: events_endrx
+  name: spis1_events_endrx
+- address: 0x4000454c
+  fields:
+  - mask: 0xff
+    name: amounttx
+  name: spis1_amounttx
+- address: 0x40004304
+  fields:
+  - mask: 0x2
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: endrx
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: acquired
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: spis1_intenset
+- address: 0x40004534
+  fields:
+  - mask: 0x3fc
+    name: rxdptr
+  name: spis1_rxdptr
+- address: 0x40004440
+  fields:
+  - mask: 0x1
+    name: overread
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: overflow
+    values:
+    - name: notpresent
+      value: 0x0
+    - name: present
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: spis1_status
+- address: 0x40004200
+  fields:
+  - mask: 0x4
+    name: end_acquire
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: spis1_shorts
+- address: 0x40004028
+  fields:
+  - mask: 0x7f8
+    name: tasks_release
+  name: spis1_tasks_release
+- address: 0x40004514
+  fields:
+  - mask: 0x3fc
+    name: pselcsn
+  name: spis1_pselcsn
+- address: 0x40004544
+  fields:
+  - mask: 0x3fc
+    name: txdptr
+  name: spis1_txdptr
+- address: 0x40004308
+  fields:
+  - mask: 0x2
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: endrx
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400
+    name: acquired
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: spis1_intenclr
+- address: 0x4000453c
+  fields:
+  - mask: 0xff
+    name: amountrx
+  name: spis1_amountrx
+- address: 0x40004128
+  fields:
+  - mask: 0x7f8
+    name: events_acquired
+  name: spis1_events_acquired
+- address: 0x40004548
+  fields:
+  - mask: 0xff
+    name: maxtx
+  name: spis1_maxtx
+- address: 0x40004508
+  fields:
+  - mask: 0x7f8
+    name: pselsck
+  name: spis1_pselsck
+- address: 0x40004024
+  fields:
+  - mask: 0x3fc
+    name: tasks_acquire
+  name: spis1_tasks_acquire
+- address: 0x40004554
+  fields:
+  - mask: 0x1
+    name: order
+    values:
+    - name: msbfirst
+      value: 0x0
+    - name: lsbfirst
+      value: 0x1
+  - mask: 0x2
+    name: cpha
+    values:
+    - name: leading
+      value: 0x0
+    - name: trailing
+      value: 0x1
+  - mask: 0x4
+    name: cpol
+    values:
+    - name: activehigh
+      value: 0x0
+    - name: activelow
+      value: 0x1
+  name: spis1_config
+- address: 0x400045c0
+  fields:
+  - mask: 0xff
+    name: orc
+  name: spis1_orc
+- address: 0x40006308
+  fields:
+  - mask: 0x1
+    name: in0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: in1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: in2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: in3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000000
+    name: port
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: gpiote_intenclr
+- address: 0x40006ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: gpiote_power
+- address: 0x4000617c
+  fields:
+  - mask: 0x3fc
+    name: events_port
+  name: gpiote_events_port
+- address: 0x40006304
+  fields:
+  - mask: 0x1
+    name: in0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: in1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: in2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: in3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: port
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: gpiote_intenset
+- address: 0x40006018
+  fields:
+  - mask: 0x7f8
+    name: tasks_out0
+  name: gpiote_tasks_out0
+- address: 0x40006528
+  fields:
+  - mask: 0x3
+    name: mode
+    values:
+    - name: disabled
+      value: 0x0
+    - name: event
+      value: 0x1
+    - name: task
+      value: 0x3
+  - mask: 0x1f00
+    name: psel
+  - mask: 0x30000
+    name: polarity
+    values:
+    - name: none
+      value: 0x0
+    - name: lotohi
+      value: 0x1
+    - name: hitolo
+      value: 0x2
+    - name: toggle
+      value: 0x3
+  - mask: 0x100000
+    name: outinit
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  name: gpiote_config0
+- address: 0x40006118
+  fields:
+  - mask: 0x7f8
+    name: events_in0
+  name: gpiote_events_in0
+- address: 0x40007500
+  fields:
+  - mask: 0x3
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: adc_enable
+- address: 0x40007400
+  fields:
+  - mask: 0x1
+    name: busy
+    values:
+    - name: ready
+      value: 0x0
+    - name: busy
+      value: 0x1
+  name: adc_busy
+- address: 0x40007ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: adc_power
+- address: 0x40007100
+  fields:
+  - mask: 0xff00
+    name: events_end
+  name: adc_events_end
+- address: 0x40007304
+  fields:
+  - mask: 0x1
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: adc_intenset
+- address: 0x40007308
+  fields:
+  - mask: 0x1
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: adc_intenclr
+- address: 0x40007000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: adc_tasks_start
+- address: 0x40007508
+  fields:
+  - mask: 0x3ff
+    name: result
+  name: adc_result
+- address: 0x40007504
+  fields:
+  - mask: 0x3
+    name: res
+    values:
+    - name: v8bit
+      value: 0x0
+    - name: v9bit
+      value: 0x1
+    - name: v10bit
+      value: 0x2
+  - mask: 0x1c
+    name: inpsel
+    values:
+    - name: analoginputnoprescaling
+      value: 0x0
+    - name: analoginputtwothirdsprescaling
+      value: 0x1
+    - name: analoginputonethirdprescaling
+      value: 0x2
+    - name: supplytwothirdsprescaling
+      value: 0x5
+    - name: supplyonethirdprescaling
+      value: 0x6
+  - mask: 0x60
+    name: refsel
+    values:
+    - name: vbg
+      value: 0x0
+    - name: external
+      value: 0x1
+    - name: supplyonehalfprescaling
+      value: 0x2
+    - name: supplyonethirdprescaling
+      value: 0x3
+  - mask: 0xff00
+    name: psel
+    values:
+    - name: disabled
+      value: 0x0
+    - name: analoginput0
+      value: 0x1
+    - name: analoginput1
+      value: 0x2
+    - name: analoginput2
+      value: 0x4
+    - name: analoginput3
+      value: 0x8
+    - name: analoginput4
+      value: 0x10
+    - name: analoginput5
+      value: 0x20
+    - name: analoginput6
+      value: 0x40
+    - name: analoginput7
+      value: 0x80
+  - mask: 0x30000
+    name: extrefsel
+    values:
+    - name: none
+      value: 0x0
+    - name: analogreference0
+      value: 0x1
+    - name: analogreference1
+      value: 0x2
+  name: adc_config
+- address: 0x40007004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: adc_tasks_stop
+- address: 0x40008010
+  fields:
+  - mask: 0xff0
+    name: tasks_shutdown
+  name: timer0_tasks_shutdown
+- address: 0x40008308
+  fields:
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: timer0_intenclr
+- address: 0x40008510
+  fields:
+  - mask: 0xf
+    name: prescaler
+  name: timer0_prescaler
+- address: 0x40008158
+  fields:
+  - mask: 0x7f8
+    name: events_compare0
+  name: timer0_events_compare0
+- address: 0x40008200
+  fields:
+  - mask: 0x1
+    name: compare0_clear
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: compare1_clear
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: compare2_clear
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: compare3_clear
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x100
+    name: compare0_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x200
+    name: compare1_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x400
+    name: compare2_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x800
+    name: compare3_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: timer0_shorts
+- address: 0x40008058
+  fields:
+  - mask: 0x7f8
+    name: tasks_capture0
+  name: timer0_tasks_capture0
+- address: 0x40008558
+  fields:
+  - mask: 0x7f8
+    name: cc0
+  name: timer0_cc0
+- address: 0x40008ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: timer0_power
+- address: 0x40008008
+  fields:
+  - mask: 0x7f8
+    name: tasks_count
+  name: timer0_tasks_count
+- address: 0x40008304
+  fields:
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: timer0_intenset
+- address: 0x4000800c
+  fields:
+  - mask: 0x3fc
+    name: tasks_clear
+  name: timer0_tasks_clear
+- address: 0x40008000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: timer0_tasks_start
+- address: 0x40008504
+  fields:
+  - mask: 0x1
+    name: mode
+    values:
+    - name: counter
+      value: 0x1
+    - name: timer
+      value: 0x0
+  name: timer0_mode
+- address: 0x40008508
+  fields:
+  - mask: 0x3
+    name: bitmode
+    values:
+    - name: v16bit
+      value: 0x0
+    - name: v08bit
+      value: 0x1
+    - name: v24bit
+      value: 0x2
+    - name: v32bit
+      value: 0x3
+  name: timer0_bitmode
+- address: 0x40008004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: timer0_tasks_stop
+- address: 0x4000b308
+  fields:
+  - mask: 0x1
+    name: tick
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: ovrflw
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: rtc0_intenclr
+- address: 0x4000b00c
+  fields:
+  - mask: 0x3fc
+    name: tasks_trigovrflw
+  name: rtc0_tasks_trigovrflw
+- address: 0x4000b508
+  fields:
+  - mask: 0xfff
+    name: prescaler
+  name: rtc0_prescaler
+- address: 0x4000b158
+  fields:
+  - mask: 0x7f8
+    name: events_compare0
+  name: rtc0_events_compare0
+- address: 0x4000b348
+  fields:
+  - mask: 0x1
+    name: tick
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: ovrflw
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: rtc0_evtenclr
+- address: 0x4000b504
+  fields:
+  - mask: 0xffffff
+    name: counter
+  name: rtc0_counter
+- address: 0x4000b100
+  fields:
+  - mask: 0xff00
+    name: events_tick
+  name: rtc0_events_tick
+- address: 0x4000b558
+  fields:
+  - mask: 0xffffff
+    name: compare
+  name: rtc0_cc0
+- address: 0x4000bffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: rtc0_power
+- address: 0x4000b304
+  fields:
+  - mask: 0x1
+    name: tick
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: ovrflw
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: rtc0_intenset
+- address: 0x4000b008
+  fields:
+  - mask: 0x7f8
+    name: tasks_clear
+  name: rtc0_tasks_clear
+- address: 0x4000b000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: rtc0_tasks_start
+- address: 0x4000b344
+  fields:
+  - mask: 0x1
+    name: tick
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: ovrflw
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: rtc0_evtenset
+- address: 0x4000b340
+  fields:
+  - mask: 0x1
+    name: tick
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: ovrflw
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10000
+    name: compare0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20000
+    name: compare1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40000
+    name: compare2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80000
+    name: compare3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: rtc0_evten
+- address: 0x4000b104
+  fields:
+  - mask: 0x3fc
+    name: events_ovrflw
+  name: rtc0_events_ovrflw
+- address: 0x4000b004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: rtc0_tasks_stop
+- address: 0x4000c100
+  fields:
+  - mask: 0xff00
+    name: events_datardy
+  name: temp_events_datardy
+- address: 0x4000cffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: temp_power
+- address: 0x4000c508
+  fields:
+  - mask: 0x7f8
+    name: temp
+  name: temp_temp
+- address: 0x4000c304
+  fields:
+  - mask: 0x1
+    name: datardy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: temp_intenset
+- address: 0x4000c308
+  fields:
+  - mask: 0x1
+    name: datardy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: temp_intenclr
+- address: 0x4000c000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: temp_tasks_start
+- address: 0x4000c004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: temp_tasks_stop
+- address: 0x4000dffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: rng_power
+- address: 0x4000d200
+  fields:
+  - mask: 0x1
+    name: valrdy_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: rng_shorts
+- address: 0x4000d508
+  fields:
+  - mask: 0xff
+    name: value
+  name: rng_value
+- address: 0x4000d304
+  fields:
+  - mask: 0x1
+    name: valrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: rng_intenset
+- address: 0x4000d308
+  fields:
+  - mask: 0x1
+    name: valrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: rng_intenclr
+- address: 0x4000d000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: rng_tasks_start
+- address: 0x4000d100
+  fields:
+  - mask: 0xff00
+    name: events_valrdy
+  name: rng_events_valrdy
+- address: 0x4000d504
+  fields:
+  - mask: 0x1
+    name: dercen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: rng_config
+- address: 0x4000d004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: rng_tasks_stop
+- address: 0x4000e100
+  fields:
+  - mask: 0xff00
+    name: events_endecb
+  name: ecb_events_endecb
+- address: 0x4000effc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: ecb_power
+- address: 0x4000e004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stopecb
+  name: ecb_tasks_stopecb
+- address: 0x4000e000
+  fields:
+  - mask: 0xff
+    name: tasks_startecb
+  name: ecb_tasks_startecb
+- address: 0x4000e304
+  fields:
+  - mask: 0x1
+    name: endecb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: errorecb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: ecb_intenset
+- address: 0x4000e308
+  fields:
+  - mask: 0x1
+    name: endecb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: errorecb
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: ecb_intenclr
+- address: 0x4000e104
+  fields:
+  - mask: 0x3fc
+    name: events_errorecb
+  name: ecb_events_errorecb
+- address: 0x4000e504
+  fields:
+  - mask: 0x3fc
+    name: ecbdataptr
+  name: ecb_ecbdataptr
+- address: 0x4000f400
+  fields:
+  - mask: 0xf
+    name: status
+  name: aar_status
+- address: 0x4000f500
+  fields:
+  - mask: 0x3
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x3
+  name: aar_enable
+- address: 0x4000fffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: aar_power
+- address: 0x4000f108
+  fields:
+  - mask: 0x7f8
+    name: events_notresolved
+  name: aar_events_notresolved
+- address: 0x4000f508
+  fields:
+  - mask: 0x7f8
+    name: irkptr
+  name: aar_irkptr
+- address: 0x4000f100
+  fields:
+  - mask: 0xff00
+    name: events_end
+  name: aar_events_end
+- address: 0x4000f510
+  fields:
+  - mask: 0xff0
+    name: addrptr
+  name: aar_addrptr
+- address: 0x4000f104
+  fields:
+  - mask: 0x3fc
+    name: events_resolved
+  name: aar_events_resolved
+- address: 0x4000f304
+  fields:
+  - mask: 0x1
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: resolved
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: notresolved
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: aar_intenset
+- address: 0x4000f308
+  fields:
+  - mask: 0x1
+    name: end
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: resolved
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: notresolved
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: aar_intenclr
+- address: 0x4000f000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: aar_tasks_start
+- address: 0x4000f514
+  fields:
+  - mask: 0x3fc
+    name: scratchptr
+  name: aar_scratchptr
+- address: 0x4000f504
+  fields:
+  - mask: 0x1f
+    name: nirk
+  name: aar_nirk
+- address: 0x4000f008
+  fields:
+  - mask: 0x7f8
+    name: tasks_stop
+  name: aar_tasks_stop
+- address: 0x4000f500
+  fields:
+  - mask: 0x3
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x2
+  name: ccm_enable
+- address: 0x4000f514
+  fields:
+  - mask: 0x3fc
+    name: scratchptr
+  name: ccm_scratchptr
+- address: 0x4000fffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: ccm_power
+- address: 0x4000f200
+  fields:
+  - mask: 0x1
+    name: endksgen_crypt
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: ccm_shorts
+- address: 0x4000f100
+  fields:
+  - mask: 0xff00
+    name: events_endksgen
+  name: ccm_events_endksgen
+- address: 0x4000f510
+  fields:
+  - mask: 0xff0
+    name: outptr
+  name: ccm_outptr
+- address: 0x4000f000
+  fields:
+  - mask: 0xff
+    name: tasks_ksgen
+  name: ccm_tasks_ksgen
+- address: 0x4000f104
+  fields:
+  - mask: 0x3fc
+    name: events_endcrypt
+  name: ccm_events_endcrypt
+- address: 0x4000f304
+  fields:
+  - mask: 0x1
+    name: endksgen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: endcrypt
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: ccm_intenset
+- address: 0x4000f308
+  fields:
+  - mask: 0x1
+    name: endksgen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: endcrypt
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: error
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: ccm_intenclr
+- address: 0x4000f004
+  fields:
+  - mask: 0x3fc
+    name: tasks_crypt
+  name: ccm_tasks_crypt
+- address: 0x4000f504
+  fields:
+  - mask: 0x1
+    name: mode
+    values:
+    - name: encryption
+      value: 0x0
+    - name: decryption
+      value: 0x1
+  name: ccm_mode
+- address: 0x4000f400
+  fields:
+  - mask: 0x1
+    name: micstatus
+    values:
+    - name: checkfailed
+      value: 0x0
+    - name: checkpassed
+      value: 0x1
+  name: ccm_micstatus
+- address: 0x4000f108
+  fields:
+  - mask: 0x7f8
+    name: events_error
+  name: ccm_events_error
+- address: 0x4000f508
+  fields:
+  - mask: 0x7f8
+    name: cnfptr
+  name: ccm_cnfptr
+- address: 0x4000f50c
+  fields:
+  - mask: 0x3fc
+    name: inptr
+  name: ccm_inptr
+- address: 0x4000f008
+  fields:
+  - mask: 0x7f8
+    name: tasks_stop
+  name: ccm_tasks_stop
+- address: 0x40010504
+  fields:
+  - mask: 0x3fc
+    name: crv
+  name: wdt_crv
+- address: 0x40010ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: wdt_power
+- address: 0x40010404
+  fields:
+  - mask: 0x1
+    name: rr0
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x2
+    name: rr1
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x4
+    name: rr2
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x8
+    name: rr3
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x10
+    name: rr4
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x20
+    name: rr5
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x40
+    name: rr6
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  - mask: 0x80
+    name: rr7
+    values:
+    - name: disabledorrequested
+      value: 0x0
+    - name: enabledandunrequested
+      value: 0x1
+  name: wdt_reqstatus
+- address: 0x40010670
+  fields:
+  - mask: 0xffffffff
+    name: rr
+  name: wdt_rr0
+- address: 0x40010400
+  fields:
+  - mask: 0x1
+    name: runstatus
+    values:
+    - name: notrunning
+      value: 0x0
+    - name: running
+      value: 0x1
+  name: wdt_runstatus
+- address: 0x40010100
+  fields:
+  - mask: 0xff00
+    name: events_timeout
+  name: wdt_events_timeout
+- address: 0x40010304
+  fields:
+  - mask: 0x1
+    name: timeout
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: wdt_intenset
+- address: 0x40010308
+  fields:
+  - mask: 0x1
+    name: timeout
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: wdt_intenclr
+- address: 0x40010000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: wdt_tasks_start
+- address: 0x40010508
+  fields:
+  - mask: 0x1
+    name: rr0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: rr1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: rr2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: rr3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: rr4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20
+    name: rr5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40
+    name: rr6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80
+    name: rr7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: wdt_rren
+- address: 0x4001050c
+  fields:
+  - mask: 0x1
+    name: sleep
+    values:
+    - name: pause
+      value: 0x0
+    - name: run
+      value: 0x1
+  - mask: 0x8
+    name: halt
+    values:
+    - name: pause
+      value: 0x0
+    - name: run
+      value: 0x1
+  name: wdt_config
+- address: 0x40012514
+  fields:
+  - mask: 0x3fc
+    name: acc
+  name: qdec_acc
+- address: 0x40012508
+  fields:
+  - mask: 0x7
+    name: sampleper
+    values:
+    - name: v128us
+      value: 0x0
+    - name: v256us
+      value: 0x1
+    - name: v512us
+      value: 0x2
+    - name: v1024us
+      value: 0x3
+    - name: v2048us
+      value: 0x4
+    - name: v4096us
+      value: 0x5
+    - name: v8192us
+      value: 0x6
+    - name: v16384us
+      value: 0x7
+  name: qdec_sampleper
+- address: 0x40012500
+  fields:
+  - mask: 0x1
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: qdec_enable
+- address: 0x40012528
+  fields:
+  - mask: 0x1
+    name: dbfen
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: qdec_dbfen
+- address: 0x40012510
+  fields:
+  - mask: 0x7
+    name: reportper
+    values:
+    - name: v10smpl
+      value: 0x0
+    - name: v40smpl
+      value: 0x1
+    - name: v80smpl
+      value: 0x2
+    - name: v120smpl
+      value: 0x3
+    - name: v160smpl
+      value: 0x4
+    - name: v200smpl
+      value: 0x5
+    - name: v240smpl
+      value: 0x6
+    - name: v280smpl
+      value: 0x7
+  name: qdec_reportper
+- address: 0x40012548
+  fields:
+  - mask: 0xf
+    name: accdblread
+  name: qdec_accdblread
+- address: 0x40012ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: qdec_power
+- address: 0x4001251c
+  fields:
+  - mask: 0x3fc
+    name: pselled
+  name: qdec_pselled
+- address: 0x40012108
+  fields:
+  - mask: 0x7f8
+    name: events_accof
+  name: qdec_events_accof
+- address: 0x40012304
+  fields:
+  - mask: 0x1
+    name: samplerdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: reportrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: accof
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: qdec_intenset
+- address: 0x40012000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: qdec_tasks_start
+- address: 0x40012518
+  fields:
+  - mask: 0x7f8
+    name: accread
+  name: qdec_accread
+- address: 0x40012524
+  fields:
+  - mask: 0x3fc
+    name: pselb
+  name: qdec_pselb
+- address: 0x40012004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: qdec_tasks_stop
+- address: 0x40012200
+  fields:
+  - mask: 0x1
+    name: reportrdy_readclracc
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: samplerdy_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: qdec_shorts
+- address: 0x4001250c
+  fields:
+  - mask: 0xffffffff
+    name: sample
+  name: qdec_sample
+- address: 0x40012308
+  fields:
+  - mask: 0x1
+    name: samplerdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: reportrdy
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: accof
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: qdec_intenclr
+- address: 0x40012520
+  fields:
+  - mask: 0x1fe0
+    name: psela
+  name: qdec_psela
+- address: 0x40012008
+  fields:
+  - mask: 0x7f8
+    name: tasks_readclracc
+  name: qdec_tasks_readclracc
+- address: 0x40012544
+  fields:
+  - mask: 0xf
+    name: accdbl
+  name: qdec_accdbl
+- address: 0x40012504
+  fields:
+  - mask: 0x1
+    name: ledpol
+    values:
+    - name: activelow
+      value: 0x0
+    - name: activehigh
+      value: 0x1
+  name: qdec_ledpol
+- address: 0x40012104
+  fields:
+  - mask: 0x3fc
+    name: events_reportrdy
+  name: qdec_events_reportrdy
+- address: 0x40012540
+  fields:
+  - mask: 0x1ff
+    name: ledpre
+  name: qdec_ledpre
+- address: 0x40012100
+  fields:
+  - mask: 0xff00
+    name: events_samplerdy
+  name: qdec_events_samplerdy
+- address: 0x40013500
+  fields:
+  - mask: 0x3
+    name: enable
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: lpcomp_enable
+- address: 0x40013304
+  fields:
+  - mask: 0x1
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: down
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: up
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: cross
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: lpcomp_intenset
+- address: 0x40013108
+  fields:
+  - mask: 0x7f8
+    name: events_up
+  name: lpcomp_events_up
+- address: 0x40013ffc
+  fields:
+  - mask: 0x1
+    name: power
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: lpcomp_power
+- address: 0x40013200
+  fields:
+  - mask: 0x1
+    name: ready_sample
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: ready_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: down_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: up_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: cross_stop
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: lpcomp_shorts
+- address: 0x40013008
+  fields:
+  - mask: 0x7f8
+    name: tasks_sample
+  name: lpcomp_tasks_sample
+- address: 0x40013504
+  fields:
+  - mask: 0x7
+    name: psel
+    values:
+    - name: analoginput0
+      value: 0x0
+    - name: analoginput1
+      value: 0x1
+    - name: analoginput2
+      value: 0x2
+    - name: analoginput3
+      value: 0x3
+    - name: analoginput4
+      value: 0x4
+    - name: analoginput5
+      value: 0x5
+    - name: analoginput6
+      value: 0x6
+    - name: analoginput7
+      value: 0x7
+  name: lpcomp_psel
+- address: 0x40013104
+  fields:
+  - mask: 0x3fc
+    name: events_down
+  name: lpcomp_events_down
+- address: 0x40013520
+  fields:
+  - mask: 0x3
+    name: anadetect
+    values:
+    - name: cross
+      value: 0x0
+    - name: up
+      value: 0x1
+    - name: down
+      value: 0x2
+  name: lpcomp_anadetect
+- address: 0x40013508
+  fields:
+  - mask: 0x7
+    name: refsel
+    values:
+    - name: supplyoneeighthprescaling
+      value: 0x0
+    - name: supplytwoeighthsprescaling
+      value: 0x1
+    - name: supplythreeeighthsprescaling
+      value: 0x2
+    - name: supplyfoureighthsprescaling
+      value: 0x3
+    - name: supplyfiveeighthsprescaling
+      value: 0x4
+    - name: supplysixeighthsprescaling
+      value: 0x5
+    - name: supplyseveneighthsprescaling
+      value: 0x6
+    - name: aref
+      value: 0x7
+  name: lpcomp_refsel
+- address: 0x4001310c
+  fields:
+  - mask: 0x3fc
+    name: events_cross
+  name: lpcomp_events_cross
+- address: 0x40013308
+  fields:
+  - mask: 0x1
+    name: ready
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: down
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: up
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: cross
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: lpcomp_intenclr
+- address: 0x40013000
+  fields:
+  - mask: 0xff
+    name: tasks_start
+  name: lpcomp_tasks_start
+- address: 0x40013400
+  fields:
+  - mask: 0x1
+    name: result
+    values:
+    - name: below
+      value: 0x0
+    - name: above
+      value: 0x1
+  name: lpcomp_result
+- address: 0x40013100
+  fields:
+  - mask: 0xff00
+    name: events_ready
+  name: lpcomp_events_ready
+- address: 0x4001350c
+  fields:
+  - mask: 0x1
+    name: extrefsel
+    values:
+    - name: analogreference0
+      value: 0x0
+    - name: analogreference1
+      value: 0x1
+  name: lpcomp_extrefsel
+- address: 0x40013004
+  fields:
+  - mask: 0x3fc
+    name: tasks_stop
+  name: lpcomp_tasks_stop
+- address: 0x40014000
+  fields:
+  - mask: 0xff
+    name: unused
+  name: swi_unused
+- address: 0x4001e508
+  fields:
+  - mask: 0x7f8
+    name: erasepage
+  name: nvmc_erasepage
+- address: 0x4001e50c
+  fields:
+  - mask: 0x1
+    name: eraseall
+    values:
+    - name: nooperation
+      value: 0x0
+    - name: erase
+      value: 0x1
+  name: nvmc_eraseall
+- address: 0x4001e514
+  fields:
+  - mask: 0x1
+    name: eraseuicr
+    values:
+    - name: nooperation
+      value: 0x0
+    - name: erase
+      value: 0x1
+  name: nvmc_eraseuicr
+- address: 0x4001e400
+  fields:
+  - mask: 0x1
+    name: ready
+    values:
+    - name: busy
+      value: 0x0
+    - name: ready
+      value: 0x1
+  name: nvmc_ready
+- address: 0x4001e504
+  fields:
+  - mask: 0x3
+    name: wen
+    values:
+    - name: ren
+      value: 0x0
+    - name: wen
+      value: 0x1
+    - name: een
+      value: 0x2
+  name: nvmc_config
+- address: 0x4001e510
+  fields:
+  - mask: 0xff0
+    name: erasepcr0
+  name: nvmc_erasepcr0
+- address: 0x4001e508
+  fields:
+  - mask: 0x7f8
+    name: erasepcr1
+  name: nvmc_erasepcr1
+- address: 0x4001f500
+  fields:
+  - mask: 0x1
+    name: ch0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2
+    name: ch1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4
+    name: ch2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8
+    name: ch3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10
+    name: ch4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20
+    name: ch5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40
+    name: ch6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80
+    name: ch7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x100
+    name: ch8
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x200
+    name: ch9
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x400
+    name: ch10
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x800
+    name: ch11
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x1000
+    name: ch12
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2000
+    name: ch13
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4000
+    name: ch14
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8000
+    name: ch15
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x100000
+    name: ch20
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x200000
+    name: ch21
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x400000
+    name: ch22
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x800000
+    name: ch23
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x1000000
+    name: ch24
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x2000000
+    name: ch25
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x4000000
+    name: ch26
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x8000000
+    name: ch27
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x10000000
+    name: ch28
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x20000000
+    name: ch29
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x40000000
+    name: ch30
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  - mask: 0x80000000
+    name: ch31
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+  name: ppi_chen
+- address: 0x4001f504
+  fields:
+  - mask: 0x1
+    name: ch0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: ch1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: ch2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: ch3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: ch4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: ch5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: ch6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: ch7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100
+    name: ch8
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: ch9
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: ch10
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800
+    name: ch11
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000
+    name: ch12
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000
+    name: ch13
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: ch14
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000
+    name: ch15
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100000
+    name: ch20
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200000
+    name: ch21
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400000
+    name: ch22
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800000
+    name: ch23
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000000
+    name: ch24
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000000
+    name: ch25
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000000
+    name: ch26
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000000
+    name: ch27
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000000
+    name: ch28
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000000
+    name: ch29
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000000
+    name: ch30
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: ch31
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: ppi_chenset
+- address: 0x4001f818
+  fields:
+  - mask: 0x1
+    name: ch0
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x2
+    name: ch1
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x4
+    name: ch2
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x8
+    name: ch3
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x10
+    name: ch4
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x20
+    name: ch5
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x40
+    name: ch6
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x80
+    name: ch7
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x100
+    name: ch8
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x200
+    name: ch9
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x400
+    name: ch10
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x800
+    name: ch11
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x1000
+    name: ch12
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x2000
+    name: ch13
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x4000
+    name: ch14
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x8000
+    name: ch15
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x100000
+    name: ch20
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x200000
+    name: ch21
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x400000
+    name: ch22
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x800000
+    name: ch23
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x1000000
+    name: ch24
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x2000000
+    name: ch25
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x4000000
+    name: ch26
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x8000000
+    name: ch27
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x10000000
+    name: ch28
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x20000000
+    name: ch29
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x40000000
+    name: ch30
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  - mask: 0x80000000
+    name: ch31
+    values:
+    - name: excluded
+      value: 0x0
+    - name: included
+      value: 0x1
+  name: ppi_chg0
+- address: 0x4001f508
+  fields:
+  - mask: 0x1
+    name: ch0
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: ch1
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: ch2
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: ch3
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: ch4
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20
+    name: ch5
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40
+    name: ch6
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: ch7
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100
+    name: ch8
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200
+    name: ch9
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400
+    name: ch10
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800
+    name: ch11
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000
+    name: ch12
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000
+    name: ch13
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000
+    name: ch14
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000
+    name: ch15
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100000
+    name: ch20
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200000
+    name: ch21
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400000
+    name: ch22
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800000
+    name: ch23
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000000
+    name: ch24
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000000
+    name: ch25
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000000
+    name: ch26
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000000
+    name: ch27
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000000
+    name: ch28
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000000
+    name: ch29
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000000
+    name: ch30
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000000
+    name: ch31
+    values:
+    - name: disabled
+      value: 0x0
+    - name: enabled
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: ppi_chenclr
+- address: 0x10000010
+  fields:
+  - mask: 0xff0
+    name: codepagesize
+  name: ficr_codepagesize
+- address: 0x100000a8
+  fields:
+  - mask: 0x7f8
+    name: deviceaddr0
+  name: ficr_deviceaddr0
+- address: 0x10000098
+  fields:
+  - mask: 0x7f8
+    name: er0
+  name: ficr_er0
+- address: 0x100000a0
+  fields:
+  - mask: 0x1
+    name: deviceaddrtype
+    values:
+    - name: public_
+      value: 0x0
+    - name: random
+      value: 0x1
+  name: ficr_deviceaddrtype
+- address: 0x100000a8
+  fields:
+  - mask: 0x7f8
+    name: ir0
+  name: ficr_ir0
+- address: 0x10000064
+  fields:
+  - mask: 0x3fc
+    name: deviceid0
+  name: ficr_deviceid0
+- address: 0x10000014
+  fields:
+  - mask: 0x3fc
+    name: codesize
+  name: ficr_codesize
+- address: 0x100000d8
+  fields:
+  - mask: 0x7f8
+    name: nrf_1mbit0
+  name: ficr_nrf_1mbit0
+- address: 0x10000028
+  fields:
+  - mask: 0x7f8
+    name: clenr0
+  name: ficr_clenr0
+- address: 0x10000050
+  fields:
+  - mask: 0xff0
+    name: sizeramblock0
+  name: ficr_sizeramblock0
+- address: 0x1000002c
+  fields:
+  - mask: 0xff
+    name: ppfc
+    values:
+    - name: notpresent
+      value: 0xff
+    - name: present
+      value: 0x0
+  name: ficr_ppfc
+- address: 0x10000034
+  fields:
+  - mask: 0x3fc
+    name: numramblock
+  name: ficr_numramblock
+- address: 0x1000005c
+  fields:
+  - mask: 0xffff
+    name: hwid
+  - mask: 0xffff0000
+    name: fwid
+  name: ficr_configid
+- address: 0x100000ac
+  fields:
+  - mask: 0x1
+    name: nrf_1mbit
+    values:
+    - name: override
+      value: 0x0
+    - name: notoverride
+      value: 0x1
+  - mask: 0x8
+    name: ble_1mbit
+    values:
+    - name: override
+      value: 0x0
+    - name: notoverride
+      value: 0x1
+  name: ficr_overrideen
+- address: 0x10000038
+  fields:
+  - mask: 0x7f8
+    name: sizeramblocks
+  name: ficr_sizeramblocks
+- address: 0x10000114
+  fields:
+  - mask: 0x3fc
+    name: ble_1mbit0
+  name: ficr_ble_1mbit0
+- address: 0x10001004
+  fields:
+  - mask: 0xff
+    name: pr0
+    values:
+    - name: disabled
+      value: 0xff
+    - name: enabled
+      value: 0x0
+  - mask: 0xff00
+    name: pall
+    values:
+    - name: disabled
+      value: 0xff
+    - name: enabled
+      value: 0x0
+  name: uicr_rbpconf
+- address: 0x10001008
+  fields:
+  - mask: 0xff
+    name: xtalfreq
+    values:
+    - name: v16mhz
+      value: 0xff
+    - name: v32mhz
+      value: 0x0
+  name: uicr_xtalfreq
+- address: 0x10001014
+  fields:
+  - mask: 0x3fc
+    name: bootloaderaddr
+  name: uicr_bootloaderaddr
+- address: 0x10001158
+  fields:
+  - mask: 0x7f8
+    name: nrfhw0
+  name: uicr_nrfhw0
+- address: 0x10001000
+  fields:
+  - mask: 0xff
+    name: clenr0
+  name: uicr_clenr0
+- address: 0x10001010
+  fields:
+  - mask: 0xffff
+    name: fwid
+  name: uicr_fwid
+- address: 0x100011b8
+  fields:
+  - mask: 0x7f8
+    name: nrffw0
+  name: uicr_nrffw0
+- address: 0x10001840
+  fields:
+  - mask: 0x3fc0
+    name: customer0
+  name: uicr_customer0
+- address: 0x50000508
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: gpio_outset
+- address: 0x5000051c
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: gpio_dirclr
+- address: 0x50000ec0
+  fields:
+  - mask: 0x1
+    name: dir
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x2
+    name: input
+    values:
+    - name: connect
+      value: 0x0
+    - name: disconnect
+      value: 0x1
+  - mask: 0xc
+    name: pull
+    values:
+    - name: disabled
+      value: 0x0
+    - name: pulldown
+      value: 0x1
+    - name: pullup
+      value: 0x3
+  - mask: 0x700
+    name: drive
+    values:
+    - name: s0s1
+      value: 0x0
+    - name: h0s1
+      value: 0x1
+    - name: s0h1
+      value: 0x2
+    - name: h0h1
+      value: 0x3
+    - name: d0s1
+      value: 0x4
+    - name: d0h1
+      value: 0x5
+    - name: s0d1
+      value: 0x6
+    - name: h0d1
+      value: 0x7
+  - mask: 0x30000
+    name: sense
+    values:
+    - name: disabled
+      value: 0x0
+    - name: high
+      value: 0x2
+    - name: low
+      value: 0x3
+  name: gpio_pin_cnf0
+- address: 0x50000518
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+    - name: set
+      value: 0x1
+  name: gpio_dirset
+- address: 0x5000050c
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+    - name: clear
+      value: 0x1
+  name: gpio_outclr
+- address: 0x50000510
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  name: gpio_in
+- address: 0x50000514
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: input
+      value: 0x0
+    - name: output
+      value: 0x1
+  name: gpio_dir
+- address: 0x50000504
+  fields:
+  - mask: 0x1
+    name: pin0
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2
+    name: pin1
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4
+    name: pin2
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8
+    name: pin3
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10
+    name: pin4
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20
+    name: pin5
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40
+    name: pin6
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80
+    name: pin7
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x100
+    name: pin8
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x200
+    name: pin9
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x400
+    name: pin10
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x800
+    name: pin11
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x1000
+    name: pin12
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2000
+    name: pin13
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4000
+    name: pin14
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8000
+    name: pin15
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10000
+    name: pin16
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20000
+    name: pin17
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40000
+    name: pin18
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80000
+    name: pin19
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x100000
+    name: pin20
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x200000
+    name: pin21
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x400000
+    name: pin22
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x800000
+    name: pin23
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x1000000
+    name: pin24
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x2000000
+    name: pin25
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x4000000
+    name: pin26
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x8000000
+    name: pin27
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x10000000
+    name: pin28
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x20000000
+    name: pin29
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x40000000
+    name: pin30
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  - mask: 0x80000000
+    name: pin31
+    values:
+    - name: low
+      value: 0x0
+    - name: high
+      value: 0x1
+  name: gpio_out
